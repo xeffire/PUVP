@@ -1,0 +1,18 @@
+{
+    "name": "scree/restapi",
+    "description": "Look at this description, wow!",
+    "authors": [
+        {
+            "name": "Tomas Masiliūnas",
+            "email": "tomas.masiliunas2@gmail.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Core\\": "./Core",
+            "Models\\": "./Models",
+            "Controllers\\": "./Controllers"
+        }
+    }
+}
