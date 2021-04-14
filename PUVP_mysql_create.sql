@@ -21,6 +21,9 @@ CREATE TABLE `tasks` (
 	`description` VARCHAR(511) NOT NULL,
 	`created` TIMESTAMP NOT NULL,
 	`updated` DATETIME NOT NULL,
+	`name` VARCHAR(255) NOT NULL,
+	`status` BOOLEAN NOT NULL DEFAULT '0',
+	`priority` INT(1) NOT NULL DEFAULT '2',
 	PRIMARY KEY (`id`)
 );
 
