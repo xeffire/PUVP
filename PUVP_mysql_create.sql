@@ -24,5 +24,14 @@ CREATE TABLE `tasks` (
 	PRIMARY KEY (`id`)
 );
 
+CREATE TABLE `changelogo` (
+	`id` INT(7) NOT NULL AUTO_INCREMENT,
+	`user_id` INT(5) NOT NULL,
+	`time` TIMESTAMP NOT NULL,
+	PRIMARY KEY (`id`)
+);
+
 ALTER TABLE `tasks` ADD CONSTRAINT `tasks_fk0` FOREIGN KEY (`project_id`) REFERENCES `projects`(`id`);
+
+ALTER TABLE `changelogo` ADD CONSTRAINT `changelogo_fk0` FOREIGN KEY (`user_id`) REFERENCES `users`(`id`);
 
