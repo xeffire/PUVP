@@ -10,7 +10,7 @@
       id="bootstrap-css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Log in</title>
+    <title>Prisijungimas</title>
   </head>
   <body>
     <div class="container">
@@ -20,10 +20,10 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <a href="#" class="active" id="login-form-link">Login</a>
+                  <a href="#" class="active" id="login-form-link">Prisijungti</a>
                 </div>
                 <div class="col-xs-6">
-                  <a href="register.php" id="register-form-link">Register</a>
+                  <a href="register.php" id="register-form-link">Registruotis</a>
                 </div>
               </div>
               <hr />
@@ -45,7 +45,7 @@
                         id="username"
                         tabindex="1"
                         class="form-control"
-                        placeholder="Username"
+                        placeholder="Vartotojo vardas"
                         value=""
                       />
                     </div>
@@ -56,7 +56,7 @@
                         id="password"
                         tabindex="2"
                         class="form-control"
-                        placeholder="Password"
+                        placeholder="Slaptažodis"
                       />
                     </div>
                     <div class="form-group">
@@ -68,7 +68,7 @@
                             id="login-submit"
                             tabindex="4"
                             class="form-control btn btn-login"
-                            value="Log In"
+                            value="Prisijungti"
                           />
                         </div>
                       </div>
@@ -81,7 +81,7 @@
                               href="register.php"
                               tabindex="5"
                               class="forgot-password"
-                              >Forgot Password?</a
+                              >Pamiršai slaptažodį?</a
                             >
                           </div>
                         </div>
