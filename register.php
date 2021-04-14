@@ -10,7 +10,7 @@
       id="bootstrap-css"
     />
     <link rel="stylesheet" href="style.css" />
-    <title>Register</title>
+    <title>Registracija</title>
   </head>
   <body>
     <div class="container">
@@ -20,10 +20,10 @@
             <div class="panel-heading">
               <div class="row">
                 <div class="col-xs-6">
-                  <a href="login.php" id="login-form-link">Login</a>
+                  <a href="login.php" id="login-form-link">Prisijungti</a>
                 </div>
                 <div class="col-xs-6">
-                  <a href="register.php" class="active" id="register-form-link">Register</a>
+                  <a href="register.php" class="active" id="register-form-link">Registruotis</a>
                 </div>
               </div>
               <hr />
@@ -45,7 +45,7 @@
                         id="username"
                         tabindex="1"
                         class="form-control"
-                        placeholder="Username"
+                        placeholder="Vartotojo vardas"
                         value=""
                       />
                     </div>
@@ -67,7 +67,7 @@
                         id="password"
                         tabindex="2"
                         class="form-control"
-                        placeholder="Password"
+                        placeholder="Slaptažodis"
                       />
                     </div>
                     <div class="form-group">
@@ -77,7 +77,7 @@
                         id="confirm-password"
                         tabindex="2"
                         class="form-control"
-                        placeholder="Confirm Password"
+                        placeholder="Pakartoti slaptažodį"
                       />
                     </div>
                     <div class="form-group">
@@ -89,7 +89,7 @@
                             id="register-submit"
                             tabindex="4"
                             class="form-control btn btn-register"
-                            value="Register Now"
+                            value="Užsiregistruoti"
                           />
                         </div>
                       </div>
