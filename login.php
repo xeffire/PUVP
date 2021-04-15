@@ -38,7 +38,7 @@
                     role="form"
                     style="display: block"
                   >
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <input
                         type="text"
                         name="username"
@@ -46,6 +46,17 @@
                         tabindex="1"
                         class="form-control"
                         placeholder="Vartotojo vardas"
+                        value=""
+                      />
+                    </div> -->
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        name="email"
+                        id="email"
+                        tabindex="1"
+                        class="form-control"
+                        placeholder="El. paštas"
                         value=""
                       />
                     </div>
@@ -66,7 +77,7 @@
                             type="submit"
                             name="login-submit"
                             id="login-submit"
-                            tabindex="4"
+                            tabindex="3"
                             class="form-control btn btn-login"
                             value="Prisijungti"
                           />
