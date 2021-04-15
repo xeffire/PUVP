@@ -23,7 +23,7 @@ function fetchit(e, route = "") {
       }
       alertMessage(res.body.response, 'success');
       if (route === 'login') {
-          window.location.href = '/main.php'
+          window.location.href = '/main.html';
       }
     })
     .catch((err) => console.error(err));
