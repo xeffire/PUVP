@@ -11,9 +11,9 @@ $req = preg_replace("/".$baseFolder."/", "", $request);
 
 use \Controllers\PostsController;
 use \Controllers\RegisterController;
+use \Controllers\LoginController;
 use \Core\Route;
 
 Route::get('/', $req, PostsController::class, 'show');
 Route::get('/register', $req, RegisterController::class, 'register');
-
-//q
+Route::get('/login', $req, LoginController::class, 'login');
