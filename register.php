@@ -38,7 +38,7 @@
                     role="form"
                     style="display: block"
                   >
-                    <div class="form-group">
+                    <!-- <div class="form-group">
                       <input
                         type="text"
                         name="username"
@@ -48,18 +48,18 @@
                         placeholder="Vartotojo vardas"
                         value=""
                       />
-                    </div>
-                    <!-- <div class="form-group">
+                    </div> -->
+                    <div class="form-group">
                       <input
                         type="email"
                         name="email"
                         id="email"
                         tabindex="1"
                         class="form-control"
-                        placeholder="Email Address"
+                        placeholder="El. paštas"
                         value=""
                       />
-                    </div> -->
+                    </div>
                     <div class="form-group">
                       <input
                         type="password"
@@ -75,7 +75,7 @@
                         type="password"
                         name="confirm-password"
                         id="confirm-password"
-                        tabindex="2"
+                        tabindex="3"
                         class="form-control"
                         placeholder="Pakartoti slaptažodį"
                       />
