@@ -11,6 +11,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <title>Prisijungimas</title>
+    <script src="formHandler.js" defer></script>
   </head>
   <body>
     <div class="container">
