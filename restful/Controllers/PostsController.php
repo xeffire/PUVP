@@ -2,10 +2,9 @@
 
 namespace Controllers;
 
-use \Core\Controller;
 use \Models\Cat;
 
-class PostsController extends Controller {
+class PostsController {
   
   public $data;
   public $response;
