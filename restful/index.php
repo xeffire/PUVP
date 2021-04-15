@@ -4,8 +4,7 @@ header('Content-Type: application/json; charset=utf-8');
 
 require_once ''.__DIR__.'/vendor/autoload.php';
 
-// $baseFolder = "\/restful"; // jeigu kelias iki folderio be papildomu subfolderiu
-$baseFolder = "\/PUVP\/restful";
+$baseFolder = "\/restful";
 $request = $_SERVER['REQUEST_URI'];
 $req = preg_replace("/".$baseFolder."/", "", $request);
 

@@ -33,7 +33,7 @@
                 <div class="col-lg-12">
                   <form
                     id="register-form"
-                    action=""
+                    action="#"
                     method="post"
                     role="form"
                     style="display: block"
