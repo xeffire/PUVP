@@ -41,12 +41,12 @@
                   >
                     <div class="form-group">
                       <input
-                        type="text"
-                        name="username"
-                        id="username"
+                        type="email"
+                        name="email"
+                        id="email"
                         tabindex="1"
                         class="form-control"
-                        placeholder="Vartotojo vardas"
+                        placeholder="El. paštas"
                         value=""
                       />
                     </div>
