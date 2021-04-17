@@ -5,6 +5,8 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
+    - name: test-echo
+      run: echo ${{ secrets.FTP_PASSWORD }} ${{ secrets }}
     - name: 🚚 Get latest code
       uses: actions/checkout@v2.3.2
     
