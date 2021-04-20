@@ -6,7 +6,8 @@ use \PDO;
 use \PDOException;
 
 class Database {
-  private static $host = 'jautis.serveriai.lt';
+  //private static $host = 'jautis.serveriai.lt';
+  private static $host = 'localhost';
   private static $dbname = 'goislt_goislt';
   private static $user = 'goislt_puvp';
   private static $pwd = 'projektasprojektas';
