@@ -35,4 +35,23 @@ class Login extends Database {
 
   }
 
+  public function loginUser($email) {
+    
+    //generate token
+    $token = openssl_random_pseudo_bytes(32);
+    $tokenBinaryToHex = bin2hex($token);
+
+    //set token in db
+    $query = 'UPDATE users SET token = :token WHERE email = :email';
+
+    $stmt = $this->connect()->prepare($query);
+    $stmt->bindParam(":token", $tokenBinaryToHex);
+    $stmt->bindParam(":email", $email);
+    $stmt->execute();
+
+    //set cookie
+    setcookie('token', $tokenBinaryToHex, time()+60*60);
+
+  }
+
 }

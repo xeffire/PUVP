@@ -42,6 +42,8 @@ class LoginController {
       } else {
         http_response_code(200);
 
+        $loginModel->loginUser($this->email);
+
         echo json_encode(["response" => "login success"]);
 
       }
