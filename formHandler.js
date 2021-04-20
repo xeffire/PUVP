@@ -22,9 +22,9 @@ function fetchit(e, route = "") {
           });
         return;
       }
-      alertMessage(res.body.response, "success", 0);
-      if (route === "login") {
-        window.location.href = "/main.php";
+      alertMessage(res.body.response, 'success');
+      if (route === 'login') {
+          window.location.href = '/main.html';
       }
     })
     .catch((err) => console.error(err));

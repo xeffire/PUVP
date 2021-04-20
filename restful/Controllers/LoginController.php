@@ -42,7 +42,8 @@ class LoginController {
       } else {
         http_response_code(200);
 
-        echo json_encode(["response" => "Prisijungta sėkmingai"]);
+      $loginModel->loginUser($this->email);
+      echo json_encode(["response" => "Prisijungta sėkmingai"]);
 
       }
     

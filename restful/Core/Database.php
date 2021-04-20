@@ -6,7 +6,7 @@ use \PDO;
 use \PDOException;
 
 class Database {
-  private static $host = 'jautis.serveriai.lt';
+  private static $host;
   private static $dbname = 'goislt_goislt';
   private static $user = 'goislt_puvp';
   private static $pwd = 'projektasprojektas';
@@ -14,6 +14,12 @@ class Database {
 
   public static function connect() {
     self::$sql = null;
+
+    if ($_SERVER['SERVER_ADDR'] == "79.98.25.23") {
+      self::$host = "localhost";
+    } else {
+      self::$host = "jautis.serveriai.lt";
+    }
 
     try {
 
