@@ -8,7 +8,7 @@ class Tasks extends Database {
 
   public function getAllTasks($project_id) {
 
-    $query = 'SELECT id FROM tasks WHERE project_id = :project_id';
+    $query = 'SELECT * FROM tasks WHERE project_id = :project_id';
 
     $stmt = $this->connect()->prepare($query);
     $stmt->bindParam(":project_id", $project_id);
