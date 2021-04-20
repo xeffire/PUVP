@@ -23,20 +23,19 @@ class Register extends Database {
 
   }
 
-  public function createUserAccount($email, $hashedPassword) {
+  public function createUserAccount($email, $hashedPassword, $token) {
     
-    $query = 'INSERT INTO users(email, `password`) VALUES(:email, :password)';
+    $query = 'INSERT INTO users(email, `password`, token) VALUES(:email, :password, :token)';
 
     $stmt = $this->connect()->prepare($query);
     $stmt->bindParam(":email", $email);
     $stmt->bindParam(":password", $hashedPassword);
+    $stmt->bindParam(":token", $token);
     $stmt->execute();
 
-    echo json_encode(["response" => "Registracija sėkminga."]);
+    setcookie('token', $token, time()+60*60);
 
-    //generate random token
-    // $token = openssl_random_pseudo_bytes(16);
-    // $binaryToHex = bin2hex($token);
+    echo json_encode(["response" => "Registracija sėkminga."]);
 
   }
 

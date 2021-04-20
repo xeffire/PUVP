@@ -8,6 +8,7 @@ class RegisterController {
   
   private $email;
   private $password;
+  private $confirmPassword;
 
   public function register() {
 
@@ -15,6 +16,7 @@ class RegisterController {
 
       $this->email = isset($_POST['email']) ? $_POST['email'] : null;
       $this->password = isset($_POST['password']) ? $_POST['password'] : null;
+      $this->confirmPassword = isset($_POST['confirm-password']) ? $_POST['confirm-password'] : null;
 
       $registerModel = new Register;
     
@@ -40,8 +42,12 @@ class RegisterController {
         $e[5] = "El. paštas per trumpas.";
       }
 
-      if (!empty($this->password) && !$registerModel->userExists($this->email) && strlen($this->password) < 5) {
+      if (!empty($this->password) && !$registerModel->userExists($this->email) && (strlen($this->password) < 5 || strlen($this->password) < 5)) {
         $e[6] = "Slaptažodis per trumpas.";
+      }
+
+      if (!empty($this->password) && !$registerModel->userExists($this->email) && (strlen($this->password) >= 5 && strlen($this->password) >= 5) && $this->password !== $this->confirmPassword) {
+        $e[9] = "Slaptažodžiai nesutampa.";
       }
       
       if (strlen($this->email) > 150) {
@@ -60,7 +66,11 @@ class RegisterController {
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
-        $registerModel->createUserAccount($this->email, $hashedPassword);
+        //generate token
+        $token = openssl_random_pseudo_bytes(32);
+        $tokenBinaryToHex = bin2hex($token);
+
+        $registerModel->createUserAccount($this->email, $hashedPassword, $tokenBinaryToHex);
 
       }
     

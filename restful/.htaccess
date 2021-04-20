@@ -1,7 +1,6 @@
 RewriteEngine on
 
-# RewriteBase /restful/ # jeigu kelias be papildomu subfolder
-RewriteBase /PUVP/restful/
+RewriteBase /restful/
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
