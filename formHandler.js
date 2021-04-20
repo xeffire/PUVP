@@ -1,5 +1,6 @@
 let form = document.querySelector("form");
 let dest = form.id == "register-form" ? "register" : "login";
+let timeouts = [];
 form.addEventListener("submit", (event) => fetchit(event, dest));
 
 function fetchit(e, route = "") {
@@ -17,7 +18,7 @@ function fetchit(e, route = "") {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], 'danger');
+            alertMessage(res.body[key], "danger", key);
           });
         return;
       }
@@ -36,16 +37,22 @@ box.style =
   "position: absolute; top: 0; width: 50%; min-width: 200px; max-width: 1000px;";
 document.body.appendChild(box);
 
-function alertMessage(msg, color) {
+function alertMessage(msg, color, key) {
   if (msg == undefined) {
     return;
   }
+  let existingAlert = document.querySelector(`.msg-${key}`);
+  if (existingAlert != null) {
+    existingAlert.remove();
+    clearTimeout(timeouts[key]);
+  }
   let alert = document.createElement("p");
-  alert.className = "alert alert-" + color;
-  alert.style = "text-align: center;";
+  alert.className = `alert alert-${color} msg-${key}`;
+  alert.style = "text-align: center; margin: 0;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
-  setTimeout(() => {
-    document.querySelector(".alert-danger").remove();
+  const timeout = setTimeout(() => {
+    document.querySelector(`.msg-${key}`).remove();
   }, 3000);
+  timeouts[key] = timeout;
 }
