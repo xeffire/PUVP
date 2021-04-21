@@ -4,20 +4,15 @@ body {
   justify-content: center;
   align-items: center;
 }
-.panel-login {
+.card {
   border-color: #ccc;
   -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
   box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.2);
   height: 350px;
 }
-.panel-login > .panel-heading {
-  color: #00415d;
-  background-color: #fff;
-  border-color: #fff;
-  text-align: center;
-}
-.panel-login > .panel-heading a {
+
+.card a {
   text-decoration: none;
   color: #666;
   font-weight: bold;
@@ -26,11 +21,19 @@ body {
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
 }
-.panel-login > .panel-heading a.active {
+.card a.active {
   color: #6f42c1;
   font-size: 16px;
 }
-.panel-login > .panel-heading hr {
+
+.card a:hover,
+.card a:focus {
+  text-decoration: none;
+  color: #6f42c1;
+  outline: none
+}
+
+.card hr {
   margin-top: 10px;
   margin-bottom: 0px;
   clear: both;
@@ -61,9 +64,9 @@ body {
     rgba(0, 0, 0, 0)
   );
 }
-.panel-login input[type="text"],
-.panel-login input[type="email"],
-.panel-login input[type="password"] {
+.card input[type="text"],
+.card input[type="email"],
+.card input[type="password"] {
   height: 45px;
   border: 1px solid #ddd;
   font-size: 16px;
@@ -71,16 +74,16 @@ body {
   -moz-transition: all 0.1s linear;
   transition: all 0.1s linear;
 }
-.panel-login input:hover,
-.panel-login input:focus {
+.card input:hover,
+.card input:focus {
   outline: none;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
   border-color: #ccc;
 }
-.btn-login,
-.btn-register {
+.card .btn-login,
+.card .btn-register {
   background-color: #6f42c1;
   outline: none;
   color: #fff;
@@ -92,33 +95,20 @@ body {
   border: none;
 }
 
-.btn-login {
-  margin-top: 60px;
-}
-.btn-login:hover,
-.btn-register:hover,
-.btn-login:focus,
-.btn-register:focus {
+.card .btn-login:hover,
+.card .btn-register:hover,
+.card .btn-login:focus,
+.card .btn-register:focus {
   color: #fff;
   background-color: #6610f2;
   border-color: #6610f2;
 }
 
-.btn-login:active,
-.btn-register:active {
+.card .btn-login:active,
+.card .btn-register:active {
   transform: scale(0.98);
 }
 
-.forgot-password {
-  text-decoration: underline;
-  color: #888;
-}
-.forgot-password:hover,
-.forgot-password:focus {
-  text-decoration: underline;
-  color: #666;
-}
-
 .btn:focus {
-  outline: 0 !important;
+  outline: 0 !important; 
 }
