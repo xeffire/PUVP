@@ -35,7 +35,7 @@ class Register extends Database {
 
     setcookie('token', $token, time()+60*60);
 
-    echo json_encode(["response" => "Registracija sėkminga."]);
+    return ["response" => "Registracija sėkminga."];
 
   }
 

@@ -13,12 +13,8 @@ class User extends Database {
     $stmt = $this->connect()->prepare($query);
     $stmt->bindParam(":token", $token);
     $stmt->execute();
-    
-    if ($stmt->rowCount() <= 0) {
-      return false;
-    } else {
-      return true;
-    }
+
+    return ($stmt->rowCount() <= 0) ? false : true;
 
   }
 

@@ -3,12 +3,14 @@
 namespace Core;
 
 use \Core\Auth;
+use \Core\Helpers;
 
 class Route {
 
   private $class;
 
-  public static function get($route, $current, $className, $method, $auth = null){
+  public static function get($route, $className, $method, $auth = null){
+    $current = Helpers::getCurrentRoute();
     if ($route == $current && $auth != null) {
       if (Auth::isLogged()) {
         $class = new $className;
