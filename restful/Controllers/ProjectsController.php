@@ -2,6 +2,7 @@
 
 namespace Controllers;
 
+use \Core\Helpers;
 use \Models\Projects;
 use \Models\Tasks;
 
@@ -21,11 +22,7 @@ class ProjectsController {
     
     if ($this->rows <= 0) {
 
-      $this->response = json_encode(['message' => 'Nėra duomenų.']);
-
-      echo $this->response;
-
-      http_response_code(404);
+      Helpers::response(204, ['message' => 'Nėra duomenų.']);
 
     } else {
 
@@ -45,11 +42,7 @@ class ProjectsController {
         array_push($updatedData, $task);
       }
 
-      $this->response = json_encode($updatedData);
-      
-      echo $this->response;
-      
-      http_response_code(200);
+      Helpers::response(200, $updatedData);
 
     }
 

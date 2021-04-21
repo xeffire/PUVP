@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use \Models\Register;
+use \Core\Helpers;
 
 class RegisterController {
   
@@ -59,10 +60,10 @@ class RegisterController {
       }
     
       if (!empty($e)) {
-        http_response_code(400);
-        echo json_encode($e);
+
+        Helpers::response(400, $e);
+
       } else {
-        http_response_code(200);
 
         $hashedPassword = password_hash($this->password, PASSWORD_DEFAULT);
 
@@ -70,7 +71,9 @@ class RegisterController {
         $token = openssl_random_pseudo_bytes(32);
         $tokenBinaryToHex = bin2hex($token);
 
-        $registerModel->createUserAccount($this->email, $hashedPassword, $tokenBinaryToHex);
+        $createUser = $registerModel->createUserAccount($this->email, $hashedPassword, $tokenBinaryToHex);
+
+        Helpers::response(200, $createUser);
 
       }
     

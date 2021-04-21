@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use \Models\Tasks;
+use \Core\Helpers;
 
 class TasksController
 {
@@ -26,21 +27,13 @@ class TasksController
 
         if ($this->rows <= 0) {
 
-            $this->response = json_encode(['message' => 'Nėra duomenų.']);
-
-            echo $this->response;
-
-            http_response_code(404);
+            Helpers::response(204, ['message' => 'Nėra duomenų.']);
 
         } else {
 
             $this->data = $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
 
-            $this->response = json_encode($this->data);
-
-            echo $this->response;
-
-            http_response_code(200);
+            Helpers::response(200, $this->data);
 
         }
     }

@@ -2,19 +2,13 @@
 
 namespace Models;
 
-use \Core\Database;
+use \Core\Query;
 
-class Cat extends Database {
+class Cat {
 
   public function getCatsList() {
 
-    $query = 'SELECT * FROM products0';
-
-    $stmt = $this->connect()->prepare($query);
-    //bind params
-    $stmt->execute();
-
-    return $stmt;
+    return Query::select("*", "products0", "price = :price")->bind([":price" => "345"]);
 
   }
 

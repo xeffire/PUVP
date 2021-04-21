@@ -3,6 +3,7 @@
 namespace Controllers;
 
 use \Models\Login;
+use \Core\Helpers;
 
 class LoginController {
   
@@ -37,13 +38,14 @@ class LoginController {
       }
     
       if (!empty($e)) {
-        http_response_code(400);
-        echo json_encode($e);
-      } else {
-        http_response_code(200);
 
-      $loginModel->loginUser($this->email);
-      echo json_encode(["response" => "Prisijungta sėkmingai"]);
+        Helpers::response(400, $e);
+        
+      } else {
+
+        $loginModel->loginUser($this->email);
+        
+        Helpers::response(200, ["response" => "Prisijungta sėkmingai"]);
 
       }
     
