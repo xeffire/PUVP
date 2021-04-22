@@ -1,6 +1,6 @@
 # /register
 
-> Post body:
+> Priima post su body:
 name,
 password,
 confirm-password
@@ -10,7 +10,7 @@ confirm-password
 
 # /login
 
-> Post body:
+> Priima post su body:
 name,
 password
 
