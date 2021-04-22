@@ -22,7 +22,7 @@ class ProjectsController {
     
     if ($this->rows <= 0) {
 
-      Helpers::response(204, ['message' => 'Nėra duomenų.']);
+      Helpers::response(204, ["response" => "Nėra duomenų."]);
 
     } else {
 
