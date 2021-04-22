@@ -27,6 +27,10 @@ password
 # /create-project
 *Auth required (token in cookie must be active)*
 
+> Priima post su body:
+name,
+description
+
 - 403, "response" => "Prisijungimas nebegalioja."
 - 400, ["number" => "Error message"]
 - 200, "response" => "Projektas sėkmingai sukurtas."
