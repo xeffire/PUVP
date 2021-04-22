@@ -1,7 +1,6 @@
-let form = document.querySelector("form");
-let dest = form.id == "register-form" ? "register" : "login";
 let timeouts = [];
-form.addEventListener("submit", (event) => fetchit(event, dest));
+document.querySelector('#login-form').addEventListener("submit", (event) => fetchit(event, 'login'));
+document.querySelector('#register-form').addEventListener("submit", (event) => fetchit(event, 'register'));
 
 function fetchit(e, route = "") {
   e.preventDefault();
@@ -48,7 +47,7 @@ function alertMessage(msg, color, key) {
   }
   let alert = document.createElement("p");
   alert.className = `alert alert-${color} msg-${key}`;
-  alert.style = "text-align: center; margin: 0;";
+  alert.style = "text-align: center; margin: 0; z-index: 1100;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
   const timeout = setTimeout(() => {
