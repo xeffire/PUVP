@@ -2,18 +2,14 @@
 
 namespace Models;
 
-use \Core\Database;
+use \Core\Query;
 
-class Projects extends Database {
+class Projects {
 
-  public function getProjects() {
+  public function getProjects()
+  {
 
-    $query = 'SELECT * FROM projects';
-
-    $stmt = $this->connect()->prepare($query);
-    $stmt->execute();
-
-    return $stmt;
+    return Query::select("*", "projects")->bind();
 
   }
 

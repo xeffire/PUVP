@@ -2,31 +2,30 @@
 
 namespace Models;
 
-use \Core\Database;
+use \Core\Query;
 
-class Tasks extends Database {
+class Tasks {
 
-  public function getAllTasks($project_id) {
+  public function getAllTasks($project_id)
+  {
 
-    $query = 'SELECT * FROM tasks WHERE project_id = :project_id';
+    return Query::select("*", "tasks", "project_id = :project_id")
+    ->bind([":project_id" => $project_id]);
 
-    $stmt = $this->connect()->prepare($query);
-    $stmt->bindParam(":project_id", $project_id);
-    $stmt->execute();
+  }
 
-    return $stmt;
+  public function getTasks($project_id, $select)
+  {
+
+    return Query::select($select, "tasks", "project_id = :project_id")
+    ->bind([":project_id" => $project_id]);
 
   }
 
   public function getCompletedTasks($project_id) {
 
-    $query = 'SELECT id FROM tasks WHERE project_id = :project_id AND status = 1';
-
-    $stmt = $this->connect()->prepare($query);
-    $stmt->bindParam(":project_id", $project_id);
-    $stmt->execute();
-
-    return $stmt;
+    return Query::select("id", "tasks", "project_id = :project_id AND status = 1")
+    ->bind([":project_id" => $project_id]);
 
   }
 

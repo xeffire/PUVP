@@ -33,7 +33,7 @@ class ProjectsController {
       $updatedData = [];
 
       foreach ($this->data as $task) {
-        $allTasks = $tasksModel->getAllTasks($task['id']);
+        $allTasks = $tasksModel->getTasks($task['id'], "id");
         $doneTasks = $tasksModel->getCompletedTasks($task['id']);
 
         $task['total'] = $allTasks->rowCount();
