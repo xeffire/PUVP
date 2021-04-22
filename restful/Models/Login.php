@@ -50,7 +50,7 @@ class Login extends Database {
     $stmt->execute();
 
     //set cookie
-    setcookie('token', $tokenBinaryToHex, time()+60*60);
+    setcookie('token', $tokenBinaryToHex, time()+60*60, "/");
 
   }
 
