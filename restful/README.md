@@ -5,6 +5,11 @@
 
 # /login
 
+> Post body:
+name
+password
+confirm-password
+
 - 400, "number" => "Error message"
 - 200, "response" => "Prisijungta sėkmingai"
 
