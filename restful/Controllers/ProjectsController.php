@@ -79,7 +79,7 @@ class ProjectsController {
 
       $projectsModel->create($name, $description);
 
-      Helpers::response(200, ["response"=>"now create"]);
+      Helpers::response(200, ["response"=>"Projektas sėkmingai sukurtas."]);
 
     }
 
