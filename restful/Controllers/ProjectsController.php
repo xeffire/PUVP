@@ -48,4 +48,42 @@ class ProjectsController {
 
   }
 
+  public function create() {
+
+    $name = isset($_POST['name']) ? $_POST['name'] : null;
+    $description = isset($_POST['description']) ? $_POST['description'] : null;
+  
+    $projectsModel = new Projects;
+
+    $e = [];
+
+    if (empty($name) || empty($description)) {
+      $e[1] = "Palikote tuščią laukelį.";
+    }
+
+    if (!empty($name) && !empty($description) && strlen($name) < 5) {
+      $e[2] = "Projekto pavadinimas per trumpas.";
+    }
+    
+    if (!empty($name) && !empty($description) && strlen($description) < 10) {
+      $e[3] = "Projekto aprašymas per trumpas.";
+    }
+
+
+
+    if (!empty($e)) {
+
+      Helpers::response(400, $e);
+
+    } else {
+
+      $projectsModel->create($name, $description);
+
+      Helpers::response(200, ["response"=>"now create"]);
+
+    }
+
+
+  }
+
 }

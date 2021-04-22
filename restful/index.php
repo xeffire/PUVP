@@ -12,10 +12,12 @@ use \Controllers\TasksController;
 
 use \Core\Route;
 
-Route::get('/', PostsController::class, 'show', true);
+Route::set('/', PostsController::class, 'show', true);
 
-Route::get('/register', RegisterController::class, 'register');
-Route::get('/login', LoginController::class, 'login');
+Route::set('/register', RegisterController::class, 'register');
+Route::set('/login', LoginController::class, 'login');
 
-Route::get('/projects', ProjectsController::class, 'show', true);
-Route::get('/tasks', TasksController::class, 'show', true);
+Route::set('/projects', ProjectsController::class, 'show', true);
+Route::set('/create-project', ProjectsController::class, 'create', true);
+
+Route::set('/tasks', TasksController::class, 'show', true);

@@ -9,7 +9,7 @@ class Route {
 
   private $class;
 
-  public static function get($route, $className, $method, $auth = null){
+  public static function set($route, $className, $method, $auth = null){
     $current = Helpers::getCurrentRoute();
     if ($route == $current && $auth != null) {
       if (Auth::isLogged()) {
