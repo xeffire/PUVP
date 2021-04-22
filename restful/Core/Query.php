@@ -8,23 +8,28 @@ class Query extends Database {
 
   private static $query;
 
-  public static function select($select, $from, $where)
+  public static function select($select, $from, $where = null)
   {
     
-    self::$query = "SELECT {$select} FROM {$from} WHERE {$where} ";
+    $whereCheck = ($where != null) ? "WHERE {$where}" : "";
+
+    self::$query = 
+    "SELECT {$select} FROM {$from} {$whereCheck}";
 
     return new self;
   
   }
 
-  public function bind($binds)
+  public function bind($binds = null)
   {
 
     $stmt = $this->connect()->prepare(self::$query);
 
-    foreach($binds as $key => $value)
-    {
-      $stmt->bindParam("{$key}", $value);
+    if ($binds != null) {
+      foreach($binds as $key => $value)
+      {
+        $stmt->bindParam("{$key}", $value);
+      }
     }
 
     $stmt->execute();
