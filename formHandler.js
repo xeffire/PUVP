@@ -25,6 +25,10 @@ function fetchit(e, route = "") {
       if (route === 'login') {
           window.location.href = '/main.html';
       }
+      if (route === 'register') {
+        e.target.reset();
+        document.getElementById('login-form-link').click();
+      }
     })
     .catch((err) => console.error(err));
   return false;
