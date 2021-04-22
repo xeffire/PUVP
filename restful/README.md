@@ -1,1 +1,4 @@
-Čia bus surašyti veikiantys routes ir galimi atsakymai į requestą.
+# /register
+
+- 400, "number" => "Error message"
+- 200, "response" => "Registracija sėkminga."
