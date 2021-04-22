@@ -1,5 +1,10 @@
 # /register
 
+> Post body:
+name,
+password,
+confirm-password
+
 - 400, "number" => "Error message"
 - 200, "response" => "Registracija sėkminga."
 
@@ -7,8 +12,7 @@
 
 > Post body:
 name,
-password,
-confirm-password,
+password
 
 - 400, "number" => "Error message"
 - 200, "response" => "Prisijungta sėkmingai"
