@@ -1,0 +1,11 @@
+GET https://goberis.lt/restful/
+###
+POST https://goberis.lt/restful/login
+###
+GET https://goberis.lt/restful/register
+###
+GET https://goberis.lt/restful/tasks
+###
+GET https://goberis.lt/restful/projects
+
+
