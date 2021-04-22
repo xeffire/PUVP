@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+
 }
 .card {
   border-color: #ccc;
@@ -97,6 +98,7 @@ body {
 
 .card .btn-login:hover,
 .card .btn-register:hover,
+.container .btn-primary:hover,
 .card .btn-login:focus,
 .card .btn-register:focus {
   color: #fff;
@@ -111,4 +113,30 @@ body {
 
 .btn:focus {
   outline: 0 !important; 
+}
+
+.navbar .btn-outline-primary {
+  color: #6f42c1; 
+  border-color: #6f42c1;
+}
+
+.navbar .btn-outline-primary:hover {
+  background-color: #6f42c1;
+  color: white;
+  border-color: #6f42c1;
+}
+
+.navbar .btn-link {
+  text-decoration: none;
+  
+}
+
+.container h1 {
+  font-family: 'Itim', cursive;
+  font-size: 4rem;
+}
+
+.container .btn-primary {
+  background-color: #6f42c1;
+  border-color: #6f42c1;
 }
