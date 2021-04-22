@@ -21,10 +21,13 @@ function fetchit(e, route = "") {
           });
         return;
       }
-      alertMessage(res.body.response, 'success');
       if (route === 'login') {
-          window.location.href = '/main.html';
+        window.location.href = '/main.html';
+        return;
       }
+      alertMessage(res.body.response, 'success');
+      e.target.reset();
+      document.getElementById('login-form-link').click();
     })
     .catch((err) => console.error(err));
   return false;
