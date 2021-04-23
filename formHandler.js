@@ -17,7 +17,7 @@ function fetchit(e, route = "") {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], "danger", key);
+            alertMessage(res.body[key], key);
           });
         return;
       }
@@ -25,7 +25,7 @@ function fetchit(e, route = "") {
         window.location.href = '/main.html';
         return;
       }
-      alertMessage(res.body.response, 'success');
+      alertMessage(res.body.response);
       e.target.reset();
       document.getElementById('login-form-link').click();
     })
@@ -36,10 +36,10 @@ function fetchit(e, route = "") {
 let box = document.createElement("div");
 
 box.style =
-  "position: absolute; top: 0; width: 50%; min-width: 200px; max-width: 1000px;";
+  "position: absolute; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
 document.body.appendChild(box);
 
-function alertMessage(msg, color, key) {
+function alertMessage(msg, key) {
   if (msg == undefined) {
     return;
   }
@@ -49,8 +49,8 @@ function alertMessage(msg, color, key) {
     clearTimeout(timeouts[key]);
   }
   let alert = document.createElement("p");
-  alert.className = `alert alert-${color} msg-${key}`;
-  alert.style = "text-align: center; margin: 0; z-index: 1100;";
+  alert.className = `alert alert-primary msg-${key}`;
+  alert.style = "text-align: center; margin: 0; z-index: 1101;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
   const timeout = setTimeout(() => {
