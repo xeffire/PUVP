@@ -4,11 +4,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
     <link
       href="bootstrap-5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -16,47 +18,52 @@
     <title>Padarai</title>
   </head>
   <body>
-  <div class="vh-100 w-100">
+    <div class="navbar">
+      <button
+      type="button"
+      class="btn btn-link text-secondary text-decoration-none mx-2"
+      data-toggle="modal"
+      href="#login"
+    >
+      Prisijungti
+    </button>
+    <button
+      type="button"
+      class="btn btn-outline-primary me-4"
+      data-toggle="modal"
+      data-target="#register"
+    >
+      Registruotis
+    </button>
+  </div>
+    <!-- kodel background-curve scrollinasi kartu su psl? matosi sumazinus langa, neiseina pataisyti -->
     <div
       class="background"
-      style="background-image: url(./background-curve.svg)"
+      style="background-image: url(./background-curve.svg);"
     ></div>
-    <div class="navbar">
-    <button
-    type="button"
-    class="btn btn-link text-secondary text-decoration-none"
-    data-toggle="modal"
-    href="#login"
-  >
-    Prisijungti
-  </button>
-  <button
-    type="button"
-    class="btn btn-outline-primary me-3"
-    data-toggle="modal"
-    data-target="#register"
-  >
-    Registruotis
-  </button>
-    </div>
-    <div class="d-flex justify-content-around h-100">
-      <div class="d-flex flex-column justify-content-center" style="width: 30%; min-width: 250px;">
-      <h1 class="mb-3">Padarai</h1>
-      <h3 class="text-secondary mb-5">Padės padaryti paprastai</h3>
-      <p class="text-black-50 mb-5">Sistema, skirta projektų užduočių valdymui ir vykdomų projektų proceso palaikymui</p>
-      <button
-        type="button"
-        class="btn btn-primary btn-lg align-self-start"
-        data-toggle="modal"
-        data-target="#register"
-      >
-        Registruotis
-      </button>
-      <p class="text-black-50">Jau turi paskyrą? <a class="fw-bold text-decoration-none text-secondary">Prisijunk</a></p>
+    
+    <div class="container d-flex flex-column">
+      <div class="row flex-grow-1 gx-5">
+        <div class="col-md-6 p-5">
+          <h1 class="mb-3 mt-3" style="font-family: 'Itim', cursive; font-size: 4rem;">Padarai</h1>
+          <h4 class="text-secondary mb-5">Padės padaryti paprastai</h4>
+          <p class="text-black-50 mb-5">Sistema, skirta projektų užduočių valdymui ir vykdomų projektų proceso palaikymui</p>
+          <button
+            type="button"
+            class="btn btn-primary btn-lg align-self-start mt-3"
+            data-toggle="modal"
+            data-target="#register"
+          >
+            Registruokis
+          </button>
+          <p class="text-black-50 mt-2">Jau turi paskyrą? <a class="fw-bold text-decoration-none text-secondary" data-toggle="modal" href="#login">Prisijunk!</a></p>
+        </div>
+        <div class="col-md-6 pt-2 align-self-center">
+          <img src="landing-illu-edit.svg" alt="Pirminė iliustracija" style="width: 100%; min-width: 400px;"/>
+        </div>
       </div>
-      <img src="landing-illu.svg" alt="Pirminė iliustracija" style="width: 40%; min-width: 400px;"/>
     </div>
-  </div>
+  
     <div class="modal flex" id="login">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -121,7 +128,7 @@
                         tabindex="3"
                         class="form-control btn btn-primary position-absolute"
                         style="top:50%; transform: translateY(-50%);"
-                        value="Prisijungti"
+                        value="PRISIJUNGTI"
                       />
                       <img
                         class="illu-new-project position-absolute"
@@ -209,7 +216,7 @@
                       tabindex="4"
                       class="form-control btn btn-primary position-absolute"
                       style="top:50%; transform: translateY(-50%);"
-                      value="Užsiregistruoti"
+                      value="UŽSIREGISTRUOTI"
                     />
                       <img
                         class="illu-new-project position-absolute"

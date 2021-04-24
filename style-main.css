@@ -6,6 +6,7 @@ body {
 .background {
   z-index: -1;
   background: url(./background-curve.svg) bottom/contain no-repeat;
+  
 }
 
 .illu-btn-container {
