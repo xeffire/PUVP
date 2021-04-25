@@ -17,7 +17,7 @@ function fetchit(e, route = "") {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], key);
+            alertMessage(res.body[key], key, 'danger');
           });
         return;
       }
@@ -25,7 +25,7 @@ function fetchit(e, route = "") {
         window.location.href = '/main.html';
         return;
       }
-      alertMessage(res.body.response);
+      alertMessage(res.body.response, 'success', 'success');
       e.target.reset();
       document.getElementById('login-form-link').click();
     })
@@ -36,10 +36,10 @@ function fetchit(e, route = "") {
 let box = document.createElement("div");
 
 box.style =
-  "position: absolute; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
+  "position: fixed; z-index: 1200; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
 document.body.appendChild(box);
 
-function alertMessage(msg, key) {
+function alertMessage(msg, key, color) {
   if (msg == undefined) {
     return;
   }
@@ -49,7 +49,7 @@ function alertMessage(msg, key) {
     clearTimeout(timeouts[key]);
   }
   let alert = document.createElement("p");
-  alert.className = `alert alert-primary msg-${key}`;
+  alert.className = `alert alert-${color} msg-${key}`;
   alert.style = "text-align: center; margin: 0; z-index: 1101;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
