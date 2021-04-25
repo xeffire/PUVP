@@ -3,11 +3,11 @@ body {
   min-height: 100vh;
 }
 
-.background {
+/* .background {
   z-index: -1;
   background: url(./background-curve.svg) bottom/contain no-repeat;
   
-}
+} */
 
 .illu-btn-container {
   position: relative;
@@ -26,5 +26,16 @@ body {
 }
 .container .btn {
   box-shadow: none;
+}
+
+
+/* Generuojamos korteles stiliai */
+.card-header.bg-primary {
+  background-color: #7749f8!important;
+  color: white;
+}
+
+.card.border-primary {
+  border-color: #7749f8!important;
 }
 
