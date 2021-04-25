@@ -109,3 +109,8 @@ body {
   outline: 0 !important; 
   box-shadow: none;
 }
+
+.btn-close {
+  width: 0.5em;
+  height: 0.5em;
+}
