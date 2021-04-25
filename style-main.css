@@ -56,3 +56,7 @@ body {
 .card-header h6 {
   color: white;
 }
+
+.card {
+  border: none;
+}
