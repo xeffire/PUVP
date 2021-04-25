@@ -48,6 +48,8 @@ let projects = [
         state: 1 
     }
 ];
+let projectsContainer = document.getElementById('projects-container');
+let projectsNew = document.getElementById('projects-new');
 fetch('/restful/projects')
 .then(res => res.json())
 .then(data => projects = data)
@@ -55,7 +57,6 @@ fetch('/restful/projects')
 .then(cardBuilder());
 
 function cardBuilder() {
-    // let card, head, body, desc = document.createElement('div');
     let fragment = document.createElement('template');
     for (let obj of projects) {
         fragment.innerHTML += `
@@ -74,17 +75,20 @@ function cardBuilder() {
         </div>
         `;
     }
-    document.getElementById('projects-container').appendChild(fragment.content);
+    for (let child of [...projectsContainer.children]) {
+        child.remove();
+    }
+    projectsContainer.appendChild(fragment.content);
 }
 
 cardBuilder();
 
 function toggleDisplay() {
     if (projects.length < 1) {
-        document.getElementById('projects-container').classList.add('d-none');
-        document.getElementById('projects-new').classList.remove('d-none');
+        projectsContainer.classList.add('d-none');
+        projectsNew.classList.remove('d-none');
         return;
     }
-    document.getElementById('projects-container').classList.remove('d-none');
-    document.getElementById('projects-new').classList.add('d-none');
+    projectsContainer.classList.remove('d-none');
+    projectsNew.classList.add('d-none');
 }
