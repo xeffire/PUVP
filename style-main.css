@@ -21,4 +21,10 @@ body {
   bottom: 46.25%;
   background-color: #7749f8;
 }
+.illu-new-project {
+  pointer-events: none;
+}
+.container .btn {
+  box-shadow: none;
+}
 
