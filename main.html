@@ -67,16 +67,53 @@
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
           <div class="card">
-            <button
-            type="button"
-            class="btn-close"
-            data-dismiss="modal"
-          ></button>
-            <div class="card-head mx-3 mb-0 row" style="margin-top: 2rem">
-                <!-- juosta su pavadinimu -->
+            <div class="card-header mb-0 mx-0">
+              <h6 class="m-0">Naujas projektas</h6>
+              <button
+                type="button"
+                class="btn-close btn-close-white m-2"
+                data-dismiss="modal"
+              ></button>
             </div>
             <div class="card-body">
-              <!-- forma -->
+              <div class="row align-items-center justify-content-center">
+                <div class="col-4">
+                  <img src="new_project.svg" class="w-75">
+                </div>
+                <div class="col-8">
+                  <form
+                    id="new-project-form"
+                    role="form"
+                  >
+                    <input
+                      required
+                      type="text"
+                      name="project-name"
+                      id="project-name"
+                      tabindex="1"
+                      class="form-control mb-2"
+                      placeholder="Projekto pavadinimas"
+                  />
+                    <textarea
+                      required
+                      name="project-description"
+                      id="project-description"
+                      tabindex="2"
+                      class="form-control mb-2"
+                      placeholder="Projekto aprašymas"
+                      rows="7"
+                    ></textarea>
+                    <input
+                      type="submit"
+                      name="project-create"
+                      id="project-create"
+                      tabindex="3"
+                      class="form-control btn btn-primary"
+                      value="SUKURTI PROJEKTĄ"
+                    />
+                  </form>
+                </div>
+              </div>
             </div>
           </div>
         </div>

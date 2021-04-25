@@ -39,3 +39,20 @@ body {
   border-color: #7749f8!important;
 }
 
+.modal .btn-close {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.btn:focus, .btn-close:focus {
+  outline: 0 !important; 
+  box-shadow: none;
+}
+
+.modal .card-header {
+  background-color: #7749f8;
+}
+
+.card-header h6 {
+  color: white;
+}
