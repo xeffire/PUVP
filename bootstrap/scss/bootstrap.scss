@@ -4,9 +4,10 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-
-// scss-docs-start import-stack
-// Configuration
+ 
+ @use "sass:map";
+ // scss-docs-start import-stack
+ // Configuration
 @import "functions";
 @import "variables";
 @import "mixins";
@@ -15,9 +16,7 @@
 
 $primary: #7749F8;
 
-$theme-colors: (
-  "primary": $primary
-);
+@debug map.set($theme-colors, "primary", $primary);
 
 .background {
   position: fixed;
