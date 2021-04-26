@@ -1,3 +1,5 @@
+import {alertMessage} from './formHandler.js';
+
 let projects = [
     {
         id: 1,
@@ -64,7 +66,7 @@ function cardBuilder() {
             <div class="card border-1 border-primary my-3 p-0" style="width: 100%;">
                 <div class="card-header bg-primary d-flex justify-content-between">
                     <h4>${obj.state == 0?'Daromas':'Padarytas'}</h4>
-                    <i class="bi bi-pen"></i>
+                    <a href="#edit_project" data-toggle="modal"><i class="bi bi-pen"></i></a>
                 </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${obj.name}</h5>
@@ -91,4 +93,24 @@ function toggleDisplay() {
     }
     projectsContainer.classList.remove('d-none');
     projectsNew.classList.add('d-none');
+}
+
+
+// document.getElementById('')
+function addNewProject() {
+    let form = new FormData(document.getElementById('new-project-form'));
+    fetch('/restsful/projects', {
+        method: 'POST',
+        body: form
+    })
+    .then(res => res.json())
+    .then(res => console.log(res.response))
+    .catch(res => res.json().then(res => {
+        Object.keys(res.body)
+        .filter((key) => key.match(/[0-9]/))
+        .forEach((key) => {
+          alertMessage(res.body[key], 'danger', key);
+        });
+    }))
+
 }
