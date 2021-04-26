@@ -31,7 +31,7 @@
         Atsijungti
       </button>
     </div>
-    <div id="projects-new" class="container d-flex flex-column" style="min-height: 90vh;">
+    <div id="projects-new" class="container d-flex flex-column d-none" style="min-height: 90vh;">
       <div class="row d-flex flex-grow-1 gx-5 align-items-center justify-content-center">
         <div class="col-md-6 p-5">
           <h1>Projektų dar nėra</h1>
@@ -57,8 +57,12 @@
     </div>
 
     <!-- konteineris su projektu kortelemis -->
-    <div class="container d-flex flex-column" style="min-height: 90vh;">
-      <div id="projects-container" class="row d-flex flex-grow-1 align-items-center justify-content-center">
+    <div id="projects-container" class="container d-flex flex-column d-none" style="min-height: 90vh;">
+      <button type="button" class="btn btn-primary d-flex justify-content-around align-items-center" data-toggle="modal" href="#new_project">
+        <i class="bi bi-plus-circle" style="font-size:calc(30px + 2vw);"></i>
+        <p class="text-end align-text-bottom">Sukurti naują <br> projektą</p>
+      </button>
+      <div id="cards-container" class="row d-flex flex-grow-1 align-items-center justify-content-center">
 
       </div>
     </div>
@@ -72,6 +76,7 @@
               <h6 class="m-0">Naujas projektas</h6>
               <button
                 type="button"
+                id="close-new-project"
                 class="btn-close btn-close-white m-2"
                 data-dismiss="modal"
               ></button>
@@ -89,7 +94,7 @@
                     <input
                       required
                       type="text"
-                      name="project-name"
+                      name="name"
                       id="project-name"
                       tabindex="1"
                       class="form-control mb-2"
@@ -97,7 +102,7 @@
                   />
                     <textarea
                       required
-                      name="project-description"
+                      name="description"
                       id="project-description"
                       tabindex="2"
                       class="form-control mb-2"
@@ -134,6 +139,7 @@
               <h6 class="m-0">Projekto peržiūra ir redagavimas</h6>
               <button
                 type="button"
+                id="close-edit-project"
                 class="btn-close btn-close-white m-2"
                 data-dismiss="modal"
               ></button>
@@ -151,15 +157,14 @@
                     <input
                       required
                       type="text"
-                      name="project-name"
+                      name="name"
                       id="project-name"
                       tabindex="1"
                       class="form-control mb-2"
-                      value="Projekto pavadinimas"
                   />
                     <textarea
                       required
-                      name="project-description"
+                      name="description"
                       id="project-description"
                       tabindex="2"
                       class="form-control mb-2"
@@ -187,7 +192,6 @@
               <div class="row d-flex justify-content-center">
                 <input
                   type="submit"
-                  form="edit-project-form"
                   name="project-save"
                   id="project-save"
                   tabindex="3"
