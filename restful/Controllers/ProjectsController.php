@@ -86,4 +86,37 @@ class ProjectsController {
 
   }
 
+  public function delete() {
+
+    if (isset($_GET)) {
+    
+      $projectsModel = new Projects;
+    
+      $id = isset($_GET['id']) ? $_GET['id'] : null;
+      
+      $e = [];
+    
+      if (empty($id)) {
+        $e[1] = "Nepasirinkote kurį projektą norite ištrinti.";
+      }
+    
+      if (!empty($id) && $projectsModel->countProjectsById($id) <= 0) {
+        $e[2] = "Projektas neegzistuoja.";
+      }
+    
+      if (!empty($e)) {
+    
+        Helpers::response(400, $e);
+    
+      } else {
+    
+        $projectsModel->deleteById($id);
+    
+        Helpers::response(200, ["response" => "Projektas ištrintas."]);
+    
+      }
+    
+    }
+  }
+
 }

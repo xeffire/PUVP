@@ -11,17 +11,22 @@ class Route {
 
   public static function set($route, $className, $method, $auth = null){
     $current = Helpers::getCurrentRoute();
-    if ($route == $current && $auth != null) {
+
+    $repeat = true;
+
+    if ($route == $current && $auth != null && $repeat) {
       if (Auth::isLogged()) {
         $class = new $className;
         $class->$method();
+        $repeat = false;
       } else {
         http_response_code(403);
         echo json_encode(["response" => "Prisijungimas nebegalioja."]);
       }
-    } elseif ($route == $current && $auth == null) {
+    } elseif ($route == $current && $auth == null && $repeat) {
       $class = new $className;
       $class->$method();
+      $repeat = false;
     }
   }
 
