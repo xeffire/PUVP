@@ -48,4 +48,19 @@ class Projects extends Database {
     
   }
 
+  public function updateById($id, $name, $description) {
+
+      
+    $query = "UPDATE projects SET name = :name, description = :description WHERE id = :id";
+    
+    $stmt = $this->connect()->prepare($query);
+    $stmt->bindParam(":id", $id);
+    $stmt->bindParam(":name", $name);
+    $stmt->bindParam(":description", $description);
+    $stmt->execute();
+    
+    return $stmt;
+    
+  }
+
 }
