@@ -24,9 +24,11 @@ body {
 .illu-new-project {
   pointer-events: none;
 }
-.container .btn {
+
+/* .navbar .btn:focus,
+.container .btn:focus {
   box-shadow: none;
-}
+} */
 
 
 /* Generuojamos korteles stiliai */
