@@ -1,4 +1,4 @@
-import {alertMessage} from './formHandler.js';
+// import {alertMessage} from './formHandler.js';
 
 let projects = [
     {
