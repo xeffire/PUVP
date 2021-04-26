@@ -18,6 +18,7 @@ class Route {
       if (Auth::isLogged()) {
         $class = new $className;
         $class->$method();
+        setcookie('token', $_COOKIE['token'], time()+60*60, "/");
         $repeat = false;
       } else {
         http_response_code(403);
