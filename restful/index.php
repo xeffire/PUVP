@@ -18,7 +18,7 @@ Route::set('/register', RegisterController::class, 'register');
 Route::set('/login', LoginController::class, 'login');
 
 Route::set('/projects', ProjectsController::class, 'show', true);
-Route::set('/create-project', ProjectsController::class, 'create', true);
+Route::set('/projects/create', ProjectsController::class, 'create', true);
 Route::set('/projects/delete', ProjectsController::class, 'delete', true);
 
 Route::set('/tasks', TasksController::class, 'show', true);

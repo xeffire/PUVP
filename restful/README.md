@@ -24,7 +24,7 @@ password
 - 204, "response" => "Nėra duomenų."
 - 200, [*projects data + total tasks and tasks done*]
 
-# /create-project
+# /projects/create
 *Auth required (token in cookie must be active)*
 
 > Priima post su body:
