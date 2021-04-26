@@ -39,7 +39,7 @@ box.style =
   "position: fixed; z-index: 1200; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
 document.body.appendChild(box);
 
-export function alertMessage(msg, color, key) {
+function alertMessage(msg, color, key) {
   if (msg == undefined) {
     return;
   }
