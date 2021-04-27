@@ -26,7 +26,7 @@ function cardBuilder() {
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${obj.name}</h5>
                     <p class="card-text">${obj.description}</p>
-                    <a href="#" class="btn btn-outline-primary align-self-end">Show tasks</a>
+                    <a href="tasks.html" class="btn btn-outline-primary align-self-end">Show tasks</a>
                 </div>
             </div>
         </div>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="bootstrap-5.0.0-beta3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style-tasks.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- <script src="projectsHandler.js" defer></script> -->
+    <title>Tasks</title>
+  </head>
+  <body>
+    <div
+    class="background"
+    style="background-image: url(./background-curve.svg);"
+  ></div>
+    <div
+      class="navbar justify-content-end"
+      style="box-shadow: 0 1px 16px 0 #0002"
+    >
+      <span class="me-3">Name@gmail.com</span>
+      <button
+        class="btn btn-outline-primary me-3"
+      >
+        Atsijungti
+      </button>
+    </div>
+    <div id="tasks-new" class="container d-flex flex-column d-none" style="min-height: 90vh;">
+      <div class="row d-flex flex-grow-1 align-items-center justify-content-center">
+        <div class="col-md-6 p-5">
+          <h1>Užduočių dar nėra</h1>
+        </div>
+        <div class="col-md-6">
+          <div class="ratio ratio-4x3" style="width: 85%; min-width: 300px">
+            <div>
+              <div class="illu-btn-container w-100 h-100 position-relative">
+                <button type="button" class="btn btn-primary d-flex justify-content-around align-items-center" data-toggle="modal" href="#new_project">
+                  <i class="bi bi-plus-circle" style="font-size:calc(30px + 2vw);"></i>
+                  <p class="text-end align-text-bottom my-2">Sukurti naują <br> užduotį</p>
+                </button>
+                <img
+                  class="illu-new-task w-100 position-absolute start-0"
+                  src="./tasks.svg"
+                  alt="iliustracija, padarai"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- konteineris su uzduociu lenta -->
+    
+    <!-- uzduoties sukurimo modalinis -->
+    
+    <!-- uzduoties perziuros ir redagavimo modalinis -->
+    
+  </body>
+</html>
