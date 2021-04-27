@@ -17,6 +17,18 @@ password
 - 400, ["number" => "Error message"]
 - 200, "response" => "Prisijungta sėkmingai"
 
+# /logout
+*Auth required (token in cookie must be active)*
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 200, ["response" => "Sėkmingai atsijungėte."]
+
+# /user
+*Auth required (token in cookie must be active)*
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 200, [*user data (id, email)*]
+
 # /projects
 *Auth required (token in cookie must be active)*
 
