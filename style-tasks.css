@@ -1,0 +1,73 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css");
+body {
+  min-height: 100vh;
+}
+
+/* .background {
+  z-index: -1;
+  background: url(./background-curve.svg) bottom/contain no-repeat;
+  
+} */
+
+.illu-btn-container {
+  position: relative;
+}
+
+.illu-btn-container > button {
+  position: absolute;
+  width: 64%;
+  left: 17%;
+  top: 23.12%;
+  bottom: 46.25%;
+  background-color: #7749f8;
+}
+
+.illu-new-task {
+  pointer-events: none;
+  top: 20%;
+}
+
+/* .navbar .btn:focus,
+.container .btn:focus {
+  box-shadow: none;
+} */
+
+/* kol kas nukopinta is maino */
+/* Generuojamos korteles stiliai */
+.card-header.bg-primary {
+  background-color: #7749f8!important;
+  color: white;
+}
+
+.card.border-primary {
+  border-color: #7749f8!important;
+}
+
+.modal .btn-close {
+  width: 0.5em;
+  height: 0.5em;
+}
+
+.btn:focus, .btn-close:focus {
+  outline: 0 !important; 
+  box-shadow: none;
+}
+
+.modal .card-header {
+  background-color: #7749f8;
+}
+
+.card-header h6 {
+  color: white;
+}
+
+.modal .card,
+.modal-content {
+  border: none;
+}
+
+.input-group {
+  width: 30%;
+  min-width: 280px;
+}
+
