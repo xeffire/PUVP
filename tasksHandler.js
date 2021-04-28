@@ -1,32 +1,35 @@
 let timeouts = [];
-let projects = [];
-let projectsContainer = document.getElementById('projects-container');
+let tasks = [];
+let tasksContainer = document.getElementById('tasks-container');
 let cardsContainer = document.getElementById('cards-container');
-let projectsNew = document.getElementById('projects-new');
+let tasksNew = document.getElementById('tasks-new');
+var url_string = location.href;
+var url = new URL(url_string);
+var id = url.searchParams.get("id");
 
-function getProjects() {
-    fetch('/restful/projects')
+function getTasks() {
+    fetch(`/restful/tasks?id=${id}`)
     .then(res => {
         if (res.status === 204) {return []}
         return res.json()
     })
     .then(data => {
-        projects = data
+        tasks = data
     })
     .then(cardBuilder)
     .then(toggleDisplay);
 }
-getProjects();
+getTasks();
 
 function cardBuilder() {
     let fragment = document.createElement('template');
-    for (let obj of projects) {
+    for (let obj of tasks) {
         fragment.innerHTML += `
         <div class="col-12 col-sm-6 col-lg-3 mb-3">
             <div class="card border-1 border-primary my-3 p-0 h-100" style="width: 100%;">
                 <div class="card-header bg-primary d-flex justify-content-between">
                     <h4>${obj.state == 0?'Daromas':'Padarytas'}</h4>
-                    <a class="text-white" data-id="${obj.id}" href="#edit_project" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
+                    <a class="text-white" data-id="${obj.id}" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
                 </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${obj.name}</h5>
@@ -48,21 +51,21 @@ function cardBuilder() {
 }
 
 function toggleDisplay() {
-    if (projects.length < 1) {
-        projectsContainer.classList.add('d-none');
-        projectsNew.classList.remove('d-none');
+    if (tasks.length < 1) {
+        tasksContainer.classList.add('d-none');
+        tasksNew.classList.remove('d-none');
         return;
     }
-    projectsContainer.classList.remove('d-none');
-    projectsNew.classList.add('d-none');
+    tasksContainer.classList.remove('d-none');
+    tasksNew.classList.add('d-none');
 }
 
 
-document.getElementById('new-project-form').addEventListener('submit', addNewProject);
-function addNewProject(e) {
+// document.getElementById('new-task-form').addEventListener('submit', addNewtask);
+function addNewtask(e) {
     e.preventDefault();
     let form = new FormData(e.target);
-    fetch('/restful/projects/create', {
+    fetch('/restful/tasks/create', {
         method: 'POST',
         body: form
     })
@@ -80,8 +83,8 @@ function addNewProject(e) {
       }
       alertMessage(res.body.response, 'success');
       e.target.reset();
-      document.getElementById('close-new-project').click();
-      getProjects();
+      document.getElementById('close-new-task').click();
+      getTasks();
     })
     .catch((err) => console.error(err));
     return false;
@@ -114,8 +117,8 @@ function alertMessage(msg, color, key) {
   timeouts[key] = timeout;
 }
 
-function deleteProject(id) {
-    fetch(`/restful/projects/delete?id=${id}`)
+function deleteTask(id) {
+    fetch(`/restful/tasks/delete?id=${id}`)
     .then((res) =>
       res.json().then((data) => ({ body: data, status: res.status }))
     )
@@ -129,9 +132,9 @@ function deleteProject(id) {
         return;
       }
       alertMessage(res.body.response, 'success');
-      document.getElementById('edit-project-form').reset();
-      document.getElementById('close-edit-project').click();
-      getProjects();
+      document.getElementById('edit-task-form').reset();
+      document.getElementById('close-edit-task').click();
+      getTasks();
     })
     .catch((err) => console.error(err));
     return false;
@@ -139,26 +142,26 @@ function deleteProject(id) {
 
 function handleEditData(e) {
     let id = e.target.getAttribute('data-id');
-    let editCard = document.getElementById('edit_project');
-    let obj = projects.filter(item => item.id == id)[0];
-    editCard.querySelector('#project-name').value = obj.name;
-    editCard.querySelector('#project-description').value = obj.description;
+    let editCard = document.getElementById('edit_task');
+    let obj = tasks.filter(item => item.id == id)[0];
+    editCard.querySelector('#task-name').value = obj.name;
+    editCard.querySelector('#task-description').value = obj.description;
     editCard.querySelector('#tasks_total').innerText = obj.total;
     editCard.querySelector('#tasks_undone').innerText = obj.total_done;
-    let oldProjectSave = editCard.querySelector('#project-save');
-    let newProjectSave = oldProjectSave.cloneNode(true);
-    oldProjectSave.parentNode.replaceChild(newProjectSave, oldProjectSave);
+    let oldtaskSave = editCard.querySelector('#task-save');
+    let newtaskSave = oldtaskSave.cloneNode(true);
+    oldtaskSave.parentNode.replaceChild(newtaskSave, oldtaskSave);
     let oldDelete = editCard.querySelector('#delete');
     let newDelete = oldDelete.cloneNode(true);
     oldDelete.parentNode.replaceChild(newDelete, oldDelete);
-    newProjectSave.addEventListener('click', () => {updateProject(id)});
-    newDelete.addEventListener('click', () => {deleteProject(id)});
+    newtaskSave.addEventListener('click', () => {updateTask(id)});
+    newDelete.addEventListener('click', () => {deleteTask(id)});
 }
 
-function updateProject(id) {
+function updateTask(id) {
     console.log(id);
-    let editForm = new FormData(document.getElementById('edit-project-form'));
-    fetch(`/restful/projects/update?id=${id}`, {
+    let editForm = new FormData(document.getElementById('edit-task-form'));
+    fetch(`/restful/tasks/update?id=${id}`, {
         method: 'POST',
         body: editForm})
         .then((res) =>
@@ -174,9 +177,9 @@ function updateProject(id) {
         return;
       }
       alertMessage(res.body.response, 'success');
-      document.getElementById('edit-project-form').reset();
-      document.getElementById('close-edit-project').click();
-      getProjects();
+      document.getElementById('edit-task-form').reset();
+      document.getElementById('close-edit-task').click();
+      getTasks();
     })
     .catch((err) => console.error(err));
     return false;
