@@ -33,7 +33,7 @@ password
 *Auth required (token in cookie must be active)*
 
 - 403, "response" => "Prisijungimas nebegalioja."
-- 204, "response" => "Nėra duomenų."
+- 204, [] *nėra duomenų*
 - 200, [*projects data + total tasks and tasks done*]
 
 # /projects/create
@@ -64,3 +64,40 @@ description
 - 403, "response" => "Prisijungimas nebegalioja."
 - 400, ["number" => "Error message"]
 - 200, "response" => "Projektas atnaujintas."
+
+
+# /tasks?id=PROJECT_ID
+*Auth required (token in cookie must be active)*
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 204, [] *nėra duomenų*
+- 200, [*all tasks of project*]
+
+# /tasks/create?id=PROJECT_ID
+*Auth required (token in cookie must be active)*
+
+> Priima post su body:
+name,
+description
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 400, ["number" => "Error message"]
+- 200, "response" => "Užduotis sėkmingai sukurta."
+
+# /tasks/delete?id=TASK_ID
+*Auth required (token in cookie must be active)*
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 400, ["number" => "Error message"]
+- 200, "response" => "Užduotis ištrinta."
+
+# /tasks/update?id=TASK_ID
+*Auth required (token in cookie must be active)*
+
+> Priima post su body:
+name,
+description
+
+- 403, "response" => "Prisijungimas nebegalioja."
+- 400, ["number" => "Error message"]
+- 200, "response" => "Užduotis atnaujinta."

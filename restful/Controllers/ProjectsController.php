@@ -22,7 +22,7 @@ class ProjectsController {
     
     if ($this->rows <= 0) {
 
-      Helpers::response(204, ["response" => "Nėra duomenų."]);
+      Helpers::response(204, []);
 
     } else {
 
@@ -68,8 +68,6 @@ class ProjectsController {
     if (!empty($name) && !empty($description) && strlen($description) < 10) {
       $e[3] = "Projekto aprašymas per trumpas.";
     }
-
-
 
     if (!empty($e)) {
 
@@ -140,15 +138,15 @@ class ProjectsController {
       }
 
       if (empty($name) || empty($description)) {
-        $e[1] = "Palikote tuščią laukelį.";
+        $e[3] = "Palikote tuščią laukelį.";
       }
   
       if (!empty($name) && !empty($description) && strlen($name) < 5) {
-        $e[2] = "Projekto pavadinimas per trumpas.";
+        $e[4] = "Projekto pavadinimas per trumpas.";
       }
       
       if (!empty($name) && !empty($description) && strlen($description) < 10) {
-        $e[3] = "Projekto aprašymas per trumpas.";
+        $e[5] = "Projekto aprašymas per trumpas.";
       }
     
       if (!empty($e)) {

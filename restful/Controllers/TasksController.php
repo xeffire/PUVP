@@ -2,38 +2,184 @@
 
 namespace Controllers;
 
-use \Models\Tasks;
 use \Core\Helpers;
+use \Models\Tasks;
+use \Models\Projects;
 
 class TasksController
 {
 
-    private $stmt;
-    private $rows;
-    private $data;
-
     public function show()
     {
-        echo 'validation happens here';
+        if (isset($_GET)) {
 
-        $project_id = $_GET['id'];
+            $project_id = isset($_GET['id']) ? $_GET['id'] : null;
 
+            $projectsModel = new Projects;
 
-        $tasksModel = new Tasks;
+            $e = [];
 
-        $this->stmt = $tasksModel->getAllTasks($project_id);
+            if (empty($project_id)) {
+                $e[1] = "Nepasirinkote projekto.";
+            }
 
-        $this->rows = $this->stmt->rowCount();
+            if (!empty($project_id) && $projectsModel->countProjectsById($project_id) <= 0) {
+                $e[2] = "Projektas neegzistuoja.";
+            }
 
-        if ($this->rows <= 0) {
+            if (!empty($e)) {
 
-            Helpers::response(204, ['message' => 'Nėra duomenų.']);
+                Helpers::response(400, $e);
 
-        } else {
+            } else {
 
-            $this->data = $this->stmt->fetchAll(\PDO::FETCH_ASSOC);
+                $tasksModel = new Tasks;
 
-            Helpers::response(200, $this->data);
+                $stmt = $tasksModel->getAllTasks($project_id);
+
+                $rows = $stmt->rowCount();
+
+                if ($rows <= 0) {
+
+                    Helpers::response(204, []);
+
+                } else {
+
+                    $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+                    Helpers::response(200, $data);
+
+                }
+
+            }
+        }
+    }
+
+    public function create()
+    {
+        if (isset($_GET) && isset($_POST)) {
+
+            $projectsModel = new Projects;
+
+            $id = isset($_GET['id']) ? $_GET['id'] : null;
+            $name = isset($_POST['name']) ? $_POST['name'] : null;
+            $description = isset($_POST['description']) ? $_POST['description'] : null;
+
+            $e = [];
+
+            if (empty($id)) {
+                $e[1] = "Nepasirinkote kuriam projektui kuriate užduotį.";
+            }
+
+            if (!empty($id) && $projectsModel->countProjectsById($id) <= 0) {
+                $e[2] = "Projektas neegzistuoja.";
+            }
+
+            if (empty($name) || empty($description)) {
+                $e[3] = "Palikote tuščią laukelį.";
+            }
+
+            if (!empty($name) && !empty($description) && strlen($name) < 5) {
+                $e[4] = "Užduoties pavadinimas per trumpas.";
+            }
+              
+            if (!empty($name) && !empty($description) && strlen($description) < 10) {
+                $e[5] = "Užduoties aprašymas per trumpas.";
+            }
+
+            if (!empty($e)) {
+
+                Helpers::response(400, $e);
+
+            } else {
+
+                $tasksModel = new Tasks;
+
+                $tasksModel->addTaskToProjectById($id, $name, $description);
+
+                Helpers::response(200, ["response" => "Užduotis sėkmingai sukurta."]);
+
+            }
+
+        }
+    }
+
+    public function delete()
+    {
+        if (isset($_GET)) {
+
+            $id = isset($_GET['id']) ? $_GET['id'] : null;
+
+            $tasksModel = new Tasks;
+
+            $e = [];
+
+            if (empty($id)) {
+                $e[1] = "Nepasirinkote kurią užduotį norite ištrinti.";
+            }
+
+            if (!empty($id) && $tasksModel->countTasksById($id) <= 0) {
+                $e[2] = "Užduotis neegzistuoja.";
+            }
+
+            if (!empty($e)) {
+
+                Helpers::response(400, $e);
+
+            } else {
+
+                $tasksModel->deleteTaskById($id);
+
+                Helpers::response(200, ["response" => "Užduotis ištrinta."]);
+
+            }
+
+        }
+    }
+
+    public function update()
+    {
+        if (isset($_GET) && isset($_POST))
+        {
+            $id = isset($_GET['id']) ? $_GET['id'] : null;
+            $name = isset($_POST['name']) ? $_POST['name'] : null;
+            $description = isset($_POST['description']) ? $_POST['description'] : null;
+
+            $tasksModel = new Tasks;
+
+            $e = [];
+
+            if (empty($id)) {
+                $e[1] = "Nepasirinkote kurią užduotį atnaujinsite.";
+            }
+
+            if (!empty($id) && $tasksModel->countTasksById($id) <= 0) {
+                $e[2] = "Užduotis neegzistuoja.";
+            }
+
+            if (empty($name) || empty($description)) {
+                $e[3] = "Palikote tuščią laukelį.";
+            }
+
+            if (!empty($name) && !empty($description) && strlen($name) < 5) {
+                $e[4] = "Užduoties pavadinimas per trumpas.";
+            }
+              
+            if (!empty($name) && !empty($description) && strlen($description) < 10) {
+                $e[5] = "Užduoties aprašymas per trumpas.";
+            }
+
+            if (!empty($e)) {
+
+                Helpers::response(400, $e);
+
+            } else {
+            
+                $tasksModel->updateTaskById($id, $name, $description);
+
+                Helpers::response(200, ["response" => "Užduotis atnaujinta."]);
+
+            }
 
         }
     }
