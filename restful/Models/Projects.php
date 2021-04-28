@@ -14,6 +14,14 @@ class Projects extends Database {
 
   }
 
+  public function countProjects()
+  {
+    $stmt = Query::select("COUNT(*)", "projects")->bind();
+    $rows = $stmt->fetchColumn();
+
+    return $rows;
+  }
+
   public function countProjectsById($id) {
 
     $answer = Query::select("COUNT(*)", "projects", "id = :id")->bind([":id" => $id]);
