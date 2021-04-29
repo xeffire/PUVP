@@ -31,7 +31,7 @@ function cardBuilder() {
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">${obj.name}</h5>
                     <p class="card-text">${obj.description}</p>
-                    <a href="tasks.html?id=${obj.id}" class="btn btn-outline-primary align-self-end mt-auto">Show tasks</a>
+                    <a href="tasks.html?id=${obj.id}" class="btn btn-outline-primary align-self-end mt-auto">Rodyti užduotis</a>
                 </div>
             </div>
         </div>
