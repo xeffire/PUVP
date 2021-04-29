@@ -25,7 +25,7 @@ function cardBuilder() {
         <div class="col-12 col-sm-6 col-lg-3 mb-3">
             <div class="card border-1 border-primary my-3 p-0 h-100" style="width: 100%;">
                 <div class="card-header bg-primary d-flex justify-content-between">
-                    <h4>${obj.total_done == obj.total?'Padarytas':'Daromas'}</h4>
+                    <h4>${obj.total_done == 0 && obj.total != 0?'Padarytas':'Daromas'}</h4>
                     <a class="text-white" data-id="${obj.id}" href="#edit_project" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
                 </div>
                 <div class="card-body d-flex flex-column">
