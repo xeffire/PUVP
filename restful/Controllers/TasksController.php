@@ -64,6 +64,7 @@ class TasksController
             $id = isset($_GET['id']) ? $_GET['id'] : null;
             $name = isset($_POST['name']) ? $_POST['name'] : null;
             $description = isset($_POST['description']) ? $_POST['description'] : null;
+            $priority = isset($_POST['priority']) ? $_POST['priority'] : null;
 
             $e = [];
 
@@ -75,7 +76,7 @@ class TasksController
                 $e[2] = "Projektas neegzistuoja.";
             }
 
-            if (empty($name) || empty($description)) {
+            if (empty($name) || empty($description) || empty($priority)) {
                 $e[3] = "Palikote tuščią laukelį.";
             }
 
@@ -95,7 +96,7 @@ class TasksController
 
                 $tasksModel = new Tasks;
 
-                $tasksModel->addTaskToProjectById($id, $name, $description);
+                $tasksModel->addTaskToProjectById($id, $name, $description, $priority);
 
                 Helpers::response(200, ["response" => "Užduotis sėkmingai sukurta."]);
 
@@ -144,6 +145,8 @@ class TasksController
             $id = isset($_GET['id']) ? $_GET['id'] : null;
             $name = isset($_POST['name']) ? $_POST['name'] : null;
             $description = isset($_POST['description']) ? $_POST['description'] : null;
+            $status = isset($_POST['status']) ? $_POST['status'] : null;
+            $priority = isset($_POST['priority']) ? $_POST['priority'] : null;
 
             $tasksModel = new Tasks;
 
@@ -157,7 +160,7 @@ class TasksController
                 $e[2] = "Užduotis neegzistuoja.";
             }
 
-            if (empty($name) || empty($description)) {
+            if (empty($name) || empty($description) || empty($status) || empty($priority) ) {
                 $e[3] = "Palikote tuščią laukelį.";
             }
 
@@ -175,7 +178,7 @@ class TasksController
 
             } else {
             
-                $tasksModel->updateTaskById($id, $name, $description);
+                $tasksModel->updateTaskById($id, $name, $description, $status, $priority, date('Y-m-d H:i:s'));
 
                 Helpers::response(200, ["response" => "Užduotis atnaujinta."]);
 

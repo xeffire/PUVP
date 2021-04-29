@@ -25,14 +25,15 @@ class Tasks extends Database {
     ->bind([":project_id" => $project_id]);
   }
 
-  public function addTaskToProjectById($id, $name, $description)
+  public function addTaskToProjectById($id, $name, $description, $priority)
   {  
-    $query = 'INSERT INTO tasks (project_id, name, description) VALUES (:id, :name, :description)';
+    $query = 'INSERT INTO tasks (project_id, name, description, priority) VALUES (:id, :name, :description, :priority)';
 
     $stmt = $this->connect()->prepare($query);
     $stmt->bindParam(":id", $id);
     $stmt->bindParam(":name", $name);
     $stmt->bindParam(":description", $description);
+    $stmt->bindParam(":priority", $priority);
     $stmt->execute();
   }
 
@@ -53,13 +54,16 @@ class Tasks extends Database {
     $stmt->execute();
   }
   
-  public function updateTaskById($id, $name, $description)
+  public function updateTaskById($id, $name, $description, $status, $priority, $updatedAt)
   {
-    $query = 'UPDATE tasks SET name = :name, description = :description WHERE id = :id';
+    $query = 'UPDATE tasks SET name = :name, description = :description, status = :status, priority = :priority, updated = :updated WHERE id = :id';
 
     $stmt = $this->connect()->prepare($query);
     $stmt->bindParam(":name", $name);
     $stmt->bindParam(":description", $description);
+    $stmt->bindParam(":status", $status);
+    $stmt->bindParam(":priority", $priority);
+    $stmt->bindParam(":updated", $updatedAt);
     $stmt->bindParam(":id", $id);
     $stmt->execute();
   }

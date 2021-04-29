@@ -78,7 +78,8 @@ description
 
 > Priima post su body:
 name,
-description
+description,
+priority
 
 - 403, "response" => "Prisijungimas nebegalioja."
 - 400, ["number" => "Error message"]
@@ -96,7 +97,9 @@ description
 
 > Priima post su body:
 name,
-description
+description,
+priority,
+status
 
 - 403, "response" => "Prisijungimas nebegalioja."
 - 400, ["number" => "Error message"]

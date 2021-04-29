@@ -45,7 +45,7 @@ class LoginController {
 
         $loginModel->loginUser($this->email);
         
-        Helpers::response(200, ["response" => "Prisijungta sėkmingai"]);
+        Helpers::response(200, ["response" => "Prisijungta sėkmingai."]);
 
       }
     
