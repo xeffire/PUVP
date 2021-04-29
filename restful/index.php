@@ -2,6 +2,8 @@
 
 header('Content-Type: application/json; charset=utf-8');
 
+ini_set('date.timezone', 'Europe/Vilnius');
+
 require_once ''.__DIR__.'/vendor/autoload.php';
 
 use \Controllers\PostsController;
