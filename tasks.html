@@ -49,7 +49,7 @@
                   type="button"
                   class="btn btn-primary d-flex justify-content-around align-items-center"
                   data-toggle="modal"
-                  href="#new_project"
+                  href="#new_task"
                 >
                   <i
                     class="bi bi-plus-circle"
@@ -85,7 +85,7 @@
           type="button"
           class="btn btn-primary d-flex justify-content-around align-items-center p-2"
           data-toggle="modal"
-          href="#new_project"
+          href="#new_task"
         >
           <i class="bi bi-plus-circle" style="font-size: calc(24px + 2vw)"></i>
           <p class="text-end align-text-bottom m-2">
@@ -190,7 +190,192 @@
     </div>
 
     <!-- uzduoties sukurimo modalinis -->
-
+    <div class="modal flex" id="new_task">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="card">
+            <div class="card-header mb-0 mx-0">
+              <h6 class="m-0">Nauja užduotis</h6>
+              <button
+                type="button"
+                id="close-new-task"
+                class="btn-close btn-close-white m-2"
+                data-dismiss="modal"
+              ></button>
+            </div>
+            <div class="card-body">
+              <div class="row mb-2 align-items-center justify-content-center">
+                <div class="col-md-4 d-sm-none d-md-block d-none">
+                  <img src="new_project.svg" class="w-100">
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <form
+                    id="new-task-form"
+                    role="form"
+                  >
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      id="task-name"
+                      tabindex="1"
+                      class="form-control mb-2"
+                      placeholder="Užduoties pavadinimas"
+                  />
+                    <textarea
+                      required
+                      name="description"
+                      id="task-description"
+                      tabindex="2"
+                      class="form-control mb-2"
+                      placeholder="Užduoties aprašymas"
+                      rows="7"
+                    ></textarea>
+                    
+                  </form>
+                </div>
+              </div>
+              <h6 class="mb-0">Prioritetas</h6>
+              <hr class="mt-1 mb-2">
+              <div class="d-flex align-items-center justify-content-around mb-4">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="low" value="low" form="new-task-form">
+                  <label class="form-check-label" for="low">žemas</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="medium" value="medium" form="new-task-form">
+                  <label class="form-check-label" for="medium">vidutinis</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="high" value="high" form="new-task-form">
+                  <label class="form-check-label" for="high">aukštas</label>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <input
+                  type="submit"
+                  form="new-task-form"
+                  name="task-create"
+                  id="task-create"
+                  tabindex="3"
+                  class="form-control btn btn-primary"
+                  style="width: 175px;"
+                  value="SUKURTI UŽDUOTĮ"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- uzduoties perziuros ir redagavimo modalinis -->
+    <div class="modal flex" id="edit_task">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="card">
+            <div class="card-header mb-0 mx-0">
+              <h6 class="m-0">Užduoties peržiūra ir redagavimas</h6>
+              <button
+                type="button"
+                id="close-task"
+                class="btn-close btn-close-white m-2"
+                data-dismiss="modal"
+              ></button>
+            </div>
+            <div class="card-body">
+              <div class="row mb-2 align-items-center justify-content-center">
+                <div class="col-md-4 d-sm-none d-md-block d-none">
+                  <img src="edit_project.svg" class="w-100">
+                </div>
+                <div class="col-md-8 col-sm-12">
+                  <form
+                    id="edit-task-form"
+                    role="form"
+                  >
+                    <input
+                      required
+                      type="text"
+                      name="name"
+                      id="task-name"
+                      tabindex="1"
+                      class="form-control mb-2"
+                      value="Užduoties pavadinimas"
+                  />
+                    <textarea
+                      required
+                      name="description"
+                      id="task-description"
+                      tabindex="2"
+                      class="form-control mb-2"
+                      rows="4"
+                    ></textarea>
+                    
+                  </form>
+                </div>
+              </div>
+              <h6 class="mb-0">Prioritetas</h6>
+              <hr class="mt-1 mb-2">
+              <div class="d-flex align-items-center justify-content-around mb-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="low" value="low" form="edit-task-form">
+                  <label class="form-check-label" for="low">žemas</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="medium" value="medium" form="edit-task-form">
+                  <label class="form-check-label" for="medium">vidutinis</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="priority" id="high" value="high" form="edit-task-form">
+                  <label class="form-check-label" for="high">aukštas</label>
+                </div>
+              </div>
+              <h6 class="mb-0">Būsena</h6>
+              <hr class="mt-1 mb-2">
+              <div class="d-flex align-items-center justify-content-around mb-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="status" id="to-do" value="to-do" form="edit-task-form">
+                  <label class="form-check-label" for="to-do">padaryti</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="status" id="in-progress" value="in-progress" form="edit-task-form">
+                  <label class="form-check-label" for="in-progress">daroma</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="status" id="done" value="done" form="edit-task-form">
+                  <label class="form-check-label" for="done">padaryta</label>
+                </div>
+              </div>
+              <div class="row mb-3 gy-3 mt-2">
+                <div class="col-md-6">
+                  <button
+                    type="button"
+                    id="delete-task"
+                    name="delete-task"
+                    class="btn btn-outline-primary"
+                  >Ištrinti užduotį
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <p class="text-muted text-end fw-light fst-italic mb-1">Sukurta: <span id="date_create">yyyy-mm-dd hh:mm</span></p>
+                  <p class="text-muted text-end fw-light fst-italic">Atnaujinta: <span id="date_update">yyyy-mm-dd hh:mm</span></p>
+                </div>
+              </div>
+              <div class="row d-flex justify-content-center">
+                <input
+                  type="submit"
+                  form="edit-task-form"
+                  name="task-edit"
+                  id="task-edit"
+                  tabindex="3"
+                  class="form-control btn btn-primary"
+                  style="width: 110px;"
+                  value="IŠSAUGOTI"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

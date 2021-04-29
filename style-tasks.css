@@ -59,6 +59,35 @@ body {
   color: #7749f8;
 }
 
+.form-check-input {
+  border-color: #7749f8;
+}
+
+.form-check-input:checked {
+  background-color: #7749f8;
+}
+
+#high {
+  border-color: #DC3545;
+}
+#high:checked {
+  background-color: #DC3545;
+}
+
+#medium {
+  border-color: #FFC107;
+}
+#medium:checked {
+  background-color: #FFC107;
+}
+
+#low {
+  border-color: #28A745;
+}
+#low:checked {
+  background-color: #28A745;
+}
+
 .modal .btn-close {
   width: 0.5em;
   height: 0.5em;
