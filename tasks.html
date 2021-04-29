@@ -75,7 +75,7 @@
     <!-- konteineris su uzduociu lenta -->
     <div
       id="tasks-container"
-      class="container d-flex flex-column d-none"
+      class="container d-flex flex-column my-3"
       style="min-height: 90vh"
     >
       <div
@@ -104,8 +104,88 @@
           <button type="button" class="btn btn-outline-primary">Ieškoti</button>
         </div>
       </div>
-            <div id="cards-container" class="row d-flex flex-grow-1 align-items-start justify-content-start">
-
+      <div id="task-cards-container mt-2" class="row d-flex flex-grow-1 align-items-start justify-content-start mt-3">
+        <div class="col-md-4 mt-3">
+          <h5>Padaryti</h5>
+          <hr>
+          <div id="todo-container" class="board-column p-1">
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
+              </div>
+            </div>
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
+              </div>
+            </div>
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-3">
+          <h5>Daroma</h5>
+          <hr>
+          <div id="in-progress-container" class="board-column p-1 ">
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id"">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
+              </div>
+            </div>
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 mt-3">
+          <h5>Padaryta</h5>
+          <hr>
+          <div id="done-container" class="board-column p-1">
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
+              </div>
+            </div>
+            <div class="card mb-1">
+              <div class="card-header bg-white d-flex justify-content-between">
+                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
+                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
+              </div>
+              <div class="card-body py-1">
+                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
 

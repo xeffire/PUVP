@@ -34,13 +34,29 @@ body {
 
 /* kol kas nukopinta is maino */
 /* Generuojamos korteles stiliai */
-.card-header.bg-primary {
-  background-color: #7749f8!important;
-  color: white;
+.card-header {
+  border-width: 0;
 }
 
 .card.border-primary {
   border-color: #7749f8!important;
+}
+
+.card-body p {
+  font-size: 14px;
+}
+
+.card  {
+  border-left: 4px solid red;
+}
+
+.board-column {
+  background-color: #E9ECEF;
+  
+}
+
+#task_id {
+  color: #7749f8;
 }
 
 .modal .btn-close {
@@ -67,7 +83,6 @@ body {
 }
 
 .input-group {
-  width: 30%;
-  min-width: 280px;
+  width: 35%;
+  min-width: 300px;
 }
-
