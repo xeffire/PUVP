@@ -115,3 +115,7 @@ body {
   width: 35%;
   min-width: 300px;
 }
+
+.bi-arrow-left {
+  color: #7749f8;
+}
