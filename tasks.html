@@ -108,86 +108,23 @@
           <button type="button" class="btn btn-outline-primary">Ieškoti</button>
         </div>
       </div>
-      <div id="task-cards-container mt-2" class="row d-flex flex-grow-1 align-items-start justify-content-start mt-3">
+      <div id="task-cards-container" class="row d-flex flex-grow-1 align-items-start justify-content-start mt-3">
         <div class="col-md-4 mt-3">
           <h5>Padaryti</h5>
           <hr>
           <div id="todo-container" class="board-column p-1">
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
-              </div>
-            </div>
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
-              </div>
-            </div>
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-4 mt-3">
           <h5>Daroma</h5>
           <hr>
           <div id="in-progress-container" class="board-column p-1 ">
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id"">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
-              </div>
-            </div>
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-4 mt-3">
           <h5>Padaryta</h5>
           <hr>
           <div id="done-container" class="board-column p-1">
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore, consectetur at, voluptates aut quidem commodi</p>
-              </div>
-            </div>
-            <div class="card mb-1">
-              <div class="card-header bg-white d-flex justify-content-between">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#0</span> Užduotis</h6>
-                <a class="text-dark" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square"></i></a>
-              </div>
-              <div class="card-body py-1">
-                <p id="task-description">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Totam dolorum ipsam similique dolore</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -208,58 +145,57 @@
               ></button>
             </div>
             <div class="card-body">
+              <form
+                id="new-task-form"
+                role="form"
+              >
               <div class="row mb-2 align-items-center justify-content-center">
                 <div class="col-md-4 d-sm-none d-md-block d-none">
                   <img src="new_project.svg" class="w-100">
                 </div>
                 <div class="col-md-8 col-sm-12">
-                  <form
-                    id="new-task-form"
-                    role="form"
-                  >
-                    <input
-                      required
-                      type="text"
-                      name="name"
-                      id="task-name"
-                      tabindex="1"
-                      class="form-control mb-2"
-                      placeholder="Užduoties pavadinimas"
+                  <input
+                    required
+                    type="text"
+                    name="name"
+                    id="task-name"
+                    tabindex="1"
+                    class="form-control mb-2"
+                    placeholder="Užduoties pavadinimas"
                   />
-                    <textarea
-                      required
-                      name="description"
-                      id="task-description"
-                      tabindex="2"
-                      class="form-control mb-2"
-                      placeholder="Užduoties aprašymas"
-                      rows="7"
-                    ></textarea>
-                    
-                  </form>
+                  <textarea
+                    required
+                    name="description"
+                    id="task-description"
+                    tabindex="2"
+                    class="form-control mb-2"
+                    placeholder="Užduoties aprašymas"
+                    rows="7"
+                  ></textarea>
+                </div>
+                <h6 class="mb-0">Prioritetas</h6>
+                <hr class="mt-1 mb-2">
+                <div class="d-flex align-items-center justify-content-around mb-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" id="low" value="0" form="new-task-form">
+                    <label class="form-check-label" for="low">žemas</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" id="medium" value="1" form="new-task-form">
+                    <label class="form-check-label" for="medium">vidutinis</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="priority" id="high" value="2" form="new-task-form">
+                    <label class="form-check-label" for="high">aukštas</label>
+                  </div>
                 </div>
               </div>
-              <h6 class="mb-0">Prioritetas</h6>
-              <hr class="mt-1 mb-2">
-              <div class="d-flex align-items-center justify-content-around mb-4">
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="low" value="low" form="new-task-form">
-                  <label class="form-check-label" for="low">žemas</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="medium" value="medium" form="new-task-form">
-                  <label class="form-check-label" for="medium">vidutinis</label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="high" value="high" form="new-task-form">
-                  <label class="form-check-label" for="high">aukštas</label>
-                </div>
-              </div>
+            </form>
               <div class="row d-flex justify-content-center">
                 <input
-                  type="submit"
-                  form="new-task-form"
-                  name="task-create"
+                type="submit"
+                form="new-task-form"
+                name="task-create"
                   id="task-create"
                   tabindex="3"
                   class="form-control btn btn-primary"
@@ -287,15 +223,15 @@
               ></button>
             </div>
             <div class="card-body">
+            <form
+              id="edit-task-form"
+              role="form"
+            >
               <div class="row mb-2 align-items-center justify-content-center">
                 <div class="col-md-4 d-sm-none d-md-block d-none">
                   <img src="edit_project.svg" class="w-100">
                 </div>
                 <div class="col-md-8 col-sm-12">
-                  <form
-                    id="edit-task-form"
-                    role="form"
-                  >
                     <input
                       required
                       type="text"
@@ -313,23 +249,21 @@
                       class="form-control mb-2"
                       rows="4"
                     ></textarea>
-                    
-                  </form>
                 </div>
               </div>
               <h6 class="mb-0">Prioritetas</h6>
               <hr class="mt-1 mb-2">
               <div class="d-flex align-items-center justify-content-around mb-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="low" value="low" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="priority" id="low" value="0" form="edit-task-form">
                   <label class="form-check-label" for="low">žemas</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="medium" value="medium" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="priority" id="medium" value="1" form="edit-task-form">
                   <label class="form-check-label" for="medium">vidutinis</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="priority" id="high" value="high" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="priority" id="high" value="2" form="edit-task-form">
                   <label class="form-check-label" for="high">aukštas</label>
                 </div>
               </div>
@@ -337,18 +271,19 @@
               <hr class="mt-1 mb-2">
               <div class="d-flex align-items-center justify-content-around mb-2">
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="status" id="to-do" value="to-do" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="status" id="to-do" value="0" form="edit-task-form">
                   <label class="form-check-label" for="to-do">padaryti</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="status" id="in-progress" value="in-progress" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="status" id="in-progress" value="1" form="edit-task-form">
                   <label class="form-check-label" for="in-progress">daroma</label>
                 </div>
                 <div class="form-check">
-                  <input class="form-check-input" type="radio" name="status" id="done" value="done" form="edit-task-form">
+                  <input class="form-check-input" type="radio" name="status" id="done" value="2" form="edit-task-form">
                   <label class="form-check-label" for="done">padaryta</label>
                 </div>
               </div>
+            </form>
               <div class="row mb-3 gy-3 mt-2">
                 <div class="col-md-6">
                   <button
@@ -367,7 +302,6 @@
               <div class="row d-flex justify-content-center">
                 <input
                   type="submit"
-                  form="edit-task-form"
                   name="task-edit"
                   id="task-edit"
                   tabindex="3"

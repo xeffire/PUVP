@@ -1,7 +1,6 @@
 let timeouts = [];
 let tasks = [];
 let tasksContainer = document.getElementById('tasks-container');
-let cardsContainer = document.getElementById('cards-container');
 let tasksNew = document.getElementById('tasks-new');
 var url_string = location.href;
 var url = new URL(url_string);
@@ -22,33 +21,38 @@ function getTasks() {
 getTasks();
 
 function cardBuilder() {
-    let fragment = document.createElement('template');
-    for (let obj of tasks) {
-        fragment.innerHTML += `
-        <div class="col-12 col-sm-6 col-lg-3 mb-3">
-            <div class="card border-1 border-primary my-3 p-0 h-100" style="width: 100%;">
-                <div class="card-header bg-primary d-flex justify-content-between">
-                    <h4>${obj.state == 0?'Daromas':'Padarytas'}</h4>
-                    <a class="text-white" data-id="${obj.id}" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
-                </div>
-                <div class="card-body d-flex flex-column">
-                    <h5 class="card-title">${obj.name}</h5>
-                    <p class="card-text">${obj.description}</p>
-                    <a href="tasks.html?id=${obj.id}" class="btn btn-outline-primary align-self-end mt-auto">Show tasks</a>
-                </div>
+    let priorityColor = ['green', 'yellow', 'red'];
+    let groups = [
+      tasks.filter(item => item.status == 0),
+      tasks.filter(item => item.status == 1),
+      tasks.filter(item => item.status == 2)
+    ];
+    ['todo-container', 'in-progress-container', 'done-container'].forEach( (val, i) => {
+      let fragment = document.createElement('template');
+      for (let obj of groups[i]) {
+          fragment.innerHTML += `
+          <div class="card mb-1" style="border-left: 4px solid ${priorityColor[obj.priority]};">
+            <div class="card-header bg-white d-flex justify-content-between">
+              <h6 id="task-name" class="text-dark"><span id="task_id">#${obj.id}</span> Užduotis</h6>
+              <a class="text-dark" data-id="${obj.id}" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
             </div>
-        </div>
-        `;
-    }
-    for (let child of [...cardsContainer.children]) {
-        child.remove();
-    }
-    cardsContainer.appendChild(fragment.content);
-    let editLinks = [...cardsContainer.querySelectorAll('a[data-id]')];
+            <div class="card-body py-1">
+              <p id="task-description">${obj.description}</p>
+            </div>
+          </div>
+          `;  
+      }
+      const cont = document.querySelector(`#${val}`);
+      for (let child of [...cont.children]) {
+          child.remove();
+      }
+      cont.appendChild(fragment.content);
+  });
+    let editLinks = document.querySelector('#task-cards-container').querySelectorAll('a[data-id]');
     for (let link of editLinks) {
         link.addEventListener('click', handleEditData)
     }
-}
+  }
 
 function toggleDisplay() {
     if (tasks.length < 1) {
@@ -61,11 +65,11 @@ function toggleDisplay() {
 }
 
 
-// document.getElementById('new-task-form').addEventListener('submit', addNewtask);
+document.getElementById('new-task-form').addEventListener('submit', addNewtask);
 function addNewtask(e) {
     e.preventDefault();
     let form = new FormData(e.target);
-    fetch('/restful/tasks/create', {
+    fetch(`/restful/tasks/create?id=${id}`, {
         method: 'POST',
         body: form
     })
@@ -133,7 +137,7 @@ function deleteTask(id) {
       }
       alertMessage(res.body.response, 'success');
       document.getElementById('edit-task-form').reset();
-      document.getElementById('close-edit-task').click();
+      document.getElementById('close-task').click();
       getTasks();
     })
     .catch((err) => console.error(err));
@@ -141,25 +145,29 @@ function deleteTask(id) {
 }
 
 function handleEditData(e) {
-    let id = e.target.getAttribute('data-id');
-    let editCard = document.getElementById('edit_task');
-    let obj = tasks.filter(item => item.id == id)[0];
+    const priority = ['low', 'medium', 'high'];
+    const status = ['to-do', 'in-progress', 'done'];
+    const taskID = e.target.getAttribute('data-id');
+    const editCard = document.getElementById('edit_task');
+    const obj = tasks.filter(item => item.id == taskID)[0];
+    console.log(tasks.filter(item => item.id == '12')[0]);
     editCard.querySelector('#task-name').value = obj.name;
     editCard.querySelector('#task-description').value = obj.description;
-    editCard.querySelector('#tasks_total').innerText = obj.total;
-    editCard.querySelector('#tasks_undone').innerText = obj.total_done;
-    let oldtaskSave = editCard.querySelector('#task-save');
+    editCard.querySelector(`#${priority[obj.priority]}`).setAttribute('checked', 'true');
+    editCard.querySelector(`#${status[obj.status]}`).setAttribute('checked', 'true');
+    editCard.querySelector('#date_create').innerText = obj.created;
+    editCard.querySelector('#date_update').innerText = obj.updated;
+    let oldtaskSave = editCard.querySelector('#task-edit');
     let newtaskSave = oldtaskSave.cloneNode(true);
     oldtaskSave.parentNode.replaceChild(newtaskSave, oldtaskSave);
-    let oldDelete = editCard.querySelector('#delete');
+    let oldDelete = editCard.querySelector('#delete-task');
     let newDelete = oldDelete.cloneNode(true);
     oldDelete.parentNode.replaceChild(newDelete, oldDelete);
-    newtaskSave.addEventListener('click', () => {updateTask(id)});
-    newDelete.addEventListener('click', () => {deleteTask(id)});
+    newtaskSave.addEventListener('click', () => {updateTask(taskID)});
+    newDelete.addEventListener('click', () => {deleteTask(taskID)});
 }
 
 function updateTask(id) {
-    console.log(id);
     let editForm = new FormData(document.getElementById('edit-task-form'));
     fetch(`/restful/tasks/update?id=${id}`, {
         method: 'POST',
@@ -178,7 +186,7 @@ function updateTask(id) {
       }
       alertMessage(res.body.response, 'success');
       document.getElementById('edit-task-form').reset();
-      document.getElementById('close-edit-task').click();
+      document.getElementById('close-task').click();
       getTasks();
     })
     .catch((err) => console.error(err));

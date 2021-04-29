@@ -160,7 +160,7 @@ class TasksController
                 $e[2] = "Užduotis neegzistuoja.";
             }
 
-            if (empty($name) || empty($description) || empty($status) || empty($priority) ) {
+            if (empty($name) || empty($description)) {
                 $e[3] = "Palikote tuščią laukelį.";
             }
 
