@@ -21,7 +21,7 @@ function getTasks() {
 getTasks();
 
 function cardBuilder() {
-    let priorityColor = ['green', 'yellow', 'red'];
+    let priorityColor = ['#28A745', '#FFC107', '#DC3545'];
     let groups = [
       tasks.filter(item => item.status == 0),
       tasks.filter(item => item.status == 1),
