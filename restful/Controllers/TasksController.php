@@ -76,7 +76,7 @@ class TasksController
                 $e[2] = "Projektas neegzistuoja.";
             }
 
-            if (empty($name) || empty($description) || empty($priority)) {
+            if (empty($name) || empty($description)) {
                 $e[3] = "Palikote tuščią laukelį.";
             }
 
