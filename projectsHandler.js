@@ -29,7 +29,7 @@ function cardBuilder() {
                     <a class="text-white" data-id="${obj.id}" href="#edit_project" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
                 </div>
                 <div class="card-body d-flex flex-column">
-                    <h5 class="card-title dissolve2">${obj.name}</h5>
+                    <h5 class="card-title dissolve2" style="line-height: 1.45rem;">${obj.name}</h5>
                     <p class="card-text dissolve4">${obj.description}</p>
                     <a href="tasks.html?id=${obj.id}" class="btn btn-outline-primary align-self-end mt-auto">Rodyti užduotis</a>
                 </div>
