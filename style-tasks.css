@@ -123,6 +123,10 @@ body {
   color: #7749f8;
 }
 
+.bi-arrow-left::before {
+  font-size: 1.5rem;
+}
+
 .card-header #task-name {
   overflow-wrap: anywhere;
 }
