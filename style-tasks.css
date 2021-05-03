@@ -123,6 +123,10 @@ body {
   color: #7749f8;
 }
 
+.card-header #task-name {
+  overflow-wrap: anywhere;
+}
+
 .dissolve2 {
   position: relative;
   height: 3rem; 
