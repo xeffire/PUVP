@@ -32,7 +32,7 @@ function cardBuilder() {
       for (let obj of groups[i]) {
           fragment.innerHTML += `
           <div class="card mb-1" style="border-left: 4px solid ${priorityColor[obj.priority]};">
-            <div class="card-header bg-white d-flex justify-content-between">
+            <div class="card-header bg-white d-flex justify-content-between text-wrap">
               <h6 id="task-name" class="text-dark ${obj.state == 2?'fw-light italic':''}"><span id="task_id">#${obj.id}</span> ${obj.name}</h6>
               <a class="text-dark" data-id="${obj.id}" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
             </div>
