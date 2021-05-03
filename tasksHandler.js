@@ -36,7 +36,7 @@ function cardBuilder() {
               <h6 id="task-name" class="text-dark ${obj.state == 2?'fw-light italic':''}"><span id="task_id">#${obj.id}</span> ${obj.name}</h6>
               <a class="text-dark" data-id="${obj.id}" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
             </div>
-            <div class="card-body py-1 dissolve3">
+            <div class="card-body dissolve3">
               <p id="task-description" class="${obj.state == 2?'fw-light italic':''}">${obj.description}</p>
             </div>
           </div>
