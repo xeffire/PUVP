@@ -69,3 +69,40 @@ body {
   min-width: 280px;
 }
 
+.card-body .card-title,
+.card-body .card-text {
+  overflow: hidden;
+}
+.dissolve2 {
+  position: relative;
+  height: 3rem; 
+}
+
+.dissolve2::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 30%;
+  height: 1.25rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  overflow: hidden;
+}
+
+.dissolve4 {
+  position: relative;
+  height: 6rem; 
+}
+
+.dissolve4::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  width: 30%;
+  height: 1.25rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  overflow: hidden;
+}
