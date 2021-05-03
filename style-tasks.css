@@ -36,12 +36,15 @@ body {
 /* Generuojamos korteles stiliai */
 .card-header {
   border-width: 0;
+  overflow: hidden;
 }
 
 .card.border-primary {
   border-color: #7749f8!important;
 }
-
+.card-body{
+  overflow: hidden;
+}
 .card-body p {
   font-size: 14px;
 }
@@ -118,4 +121,38 @@ body {
 
 .bi-arrow-left {
   color: #7749f8;
+}
+
+.dissolve2 {
+  position: relative;
+  height: 3rem; 
+}
+
+.dissolve2::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0px;
+  right: 32px;
+  width: 25%;
+  height: 1.25rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  overflow: hidden;
+}
+
+.dissolve3 {
+  position: relative;
+  height: 4.4rem; 
+}
+
+.dissolve3::after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  width: 30%;
+  height: 1.25rem;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
+  overflow: hidden;
 }
