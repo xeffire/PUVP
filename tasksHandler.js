@@ -140,7 +140,7 @@ function alertMessage(msg, color, key) {
 }
 
 function deleteTask(id) {
-  if (!confirm("Are you sure?")) {
+  if (!confirm("Ar tikrai norite ištrinti užduotį?")) {
     return;
   }
 

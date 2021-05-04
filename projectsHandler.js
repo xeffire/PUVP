@@ -118,7 +118,7 @@ function alertMessage(msg, color, key) {
 }
 
 function deleteProject(id) {
-    if (!confirm('Are you sure?')) {
+    if (!confirm('Ar tikrai norite ištrinti projektą?')) {
       return;
     }
     fetch(`/restful/projects/delete?id=${id}`)
