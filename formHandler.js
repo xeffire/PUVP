@@ -35,8 +35,8 @@ function fetchit(e, route = "") {
 
 let box = document.createElement("div");
 
-box.style =
-  "position: fixed; z-index: 1200; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
+box.style = "z-index: 1200";
+box.className = "position-fixed top-0 row start-0 end-0 justify-content-center";
 document.body.appendChild(box);
 
 function alertMessage(msg, color, key) {
@@ -49,7 +49,7 @@ function alertMessage(msg, color, key) {
     clearTimeout(timeouts[key]);
   }
   let alert = document.createElement("p");
-  alert.className = `alert alert-${color} msg-${key}`;
+  alert.className = `alert alert-${color} msg-${key} col-12 col-md-6`;
   alert.style = "text-align: center; margin: 0; z-index: 1101;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
