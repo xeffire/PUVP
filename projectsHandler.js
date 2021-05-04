@@ -90,8 +90,8 @@ function addNewProject(e) {
 
 let box = document.createElement("div");
 
-box.style =
-  "position: fixed; z-index: 1200; top: 0; width: 50%; min-width: 200px; left: 50%; transform: translateX(-50%)";
+box.style = "z-index: 1200";
+box.className = "position-fixed top-0 row start-0 end-0 justify-content-center";
 document.body.appendChild(box);
 
 function alertMessage(msg, color, key) {
