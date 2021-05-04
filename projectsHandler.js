@@ -115,6 +115,9 @@ function alertMessage(msg, color, key) {
 }
 
 function deleteProject(id) {
+    if (!confirm('Are you sure?')) {
+      return;
+    }
     fetch(`/restful/projects/delete?id=${id}`)
     .then((res) =>
       res.json().then((data) => ({ body: data, status: res.status }))
