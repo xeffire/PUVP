@@ -136,6 +136,10 @@ function alertMessage(msg, color, key) {
 }
 
 function deleteTask(id) {
+  if (!confirm("Are you sure?")) {
+    return;
+  }
+
   fetch(`/restful/tasks/delete?id=${id}`)
     .then((res) =>
       res.json().then((data) => ({ body: data, status: res.status }))
