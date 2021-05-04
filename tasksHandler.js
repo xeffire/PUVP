@@ -1,3 +1,7 @@
+if (document.cookie.indexOf('token=') === -1) {
+  logout();
+}
+
 let timeouts = [];
 let tasks = [];
 let tasksContainer = document.getElementById("tasks-container");
