@@ -21,7 +21,7 @@ class Tasks extends Database {
 
   public function getCompletedTasks($project_id)
   {
-    return Query::select("id", "tasks", "project_id = :project_id AND status = 1")
+    return Query::select("id", "tasks", "project_id = :project_id AND (status = 1 OR status = 0)")
     ->bind([":project_id" => $project_id]);
   }
 
