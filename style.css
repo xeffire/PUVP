@@ -36,6 +36,7 @@ body {
   margin-bottom: 0px;
   border: 0;
   height: 1px;
+  background: none;
   background-image: -webkit-linear-gradient(
     left,
     rgba(0, 0, 0, 0),
