@@ -116,7 +116,7 @@ function addNewtask(e) {
 let box = document.createElement("div");
 
 box.style = "z-index: 1200";
-box.className = "position-fixed top-0 row start-0 end-0 justify-content-center";
+box.className = "position-fixed top-0 start-0 end-0 justify-content-center";
 document.body.appendChild(box);
 
 function alertMessage(msg, color, key) {
@@ -129,8 +129,8 @@ function alertMessage(msg, color, key) {
     clearTimeout(timeouts[key]);
   }
   let alert = document.createElement("p");
-  alert.className = `alert alert-${color} msg-${key} col-12 col-md-6`;
-  alert.style = "text-align: center; margin: 0; z-index: 1101;";
+  alert.className = `alert alert-${color} msg-${key}`;
+  alert.style = "text-align: center; margin: 0; z-index: 1101; width: clamp(100%, 500px,  50%);";
   alert.append(document.createTextNode(msg));
   box.append(alert);
   const timeout = setTimeout(() => {
