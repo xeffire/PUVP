@@ -71,7 +71,7 @@ description
 
 - 403, "response" => "Prisijungimas nebegalioja."
 - 204, [] *nėra duomenų*
-- 200, [*all tasks of project*]
+- 200, [*all tasks of project + project_name*]
 
 # /tasks/create?id=PROJECT_ID
 *Auth required (token in cookie must be active)*
