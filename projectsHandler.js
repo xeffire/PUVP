@@ -107,7 +107,7 @@ function alertMessage(msg, color, key) {
     clearTimeout(timeouts[key]);
   }
   let alert = document.createElement("p");
-  alert.className = `alert alert-${color} msg-${key}`;
+  alert.className = `alert alert-${color} msg-${key} col-12 col-md-6`;
   alert.style = "text-align: center; margin: 0; z-index: 1101;";
   alert.append(document.createTextNode(msg));
   box.append(alert);
