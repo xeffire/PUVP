@@ -33,7 +33,16 @@ class Register extends Database {
     $stmt->bindParam(":token", $token);
     $stmt->execute();
 
-    setcookie('token', $token, time()+60*60, "/");
+    // setcookie('token', $token, time()+60*60, "/");
+    $arr_cookie_options = array(
+      'expires' => time() + 60 * 60,
+      'path' => '/',
+      'domain' => '', // leading dot for compatibility or use subdomain
+      'secure' => false, // or false
+      'httponly' => false, // or false
+      'samesite' => 'Lax', // None || Lax  || Strict
+  );
+  setcookie('token', $token, $arr_cookie_options);
 
     return ["response" => "Registracija sėkminga."];
 
