@@ -164,3 +164,35 @@ body {
   background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
   overflow: hidden;
 }
+
+#task-cards-container hr {
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+  border: 0;
+  height: 1px;
+  background: none;
+  background-image: -webkit-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2)
+  );
+  background-image: -moz-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2)
+  );
+  background-image: -ms-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2)
+  );
+  background-image: -o-linear-gradient(
+    left,
+    rgba(0, 0, 0, 0.2),
+    rgba(0, 0, 0, 0.55),
+    rgba(0, 0, 0, 0.2)
+  );
+}
