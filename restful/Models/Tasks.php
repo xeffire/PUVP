@@ -9,8 +9,18 @@ class Tasks extends Database {
 
   public function getAllTasks($project_id)
   {
-    return Query::select("*", "tasks", "project_id = :project_id")
-    ->bind([":project_id" => $project_id]);
+    // return Query::select("*", "tasks", "project_id = :project_id")
+    // ->bind([":project_id" => $project_id]);
+
+    $query = "SELECT tasks.*, projects.name AS project_name FROM tasks JOIN projects ON tasks.project_id = projects.id WHERE tasks.project_id = :project_id ORDER BY tasks.priority DESC";
+
+    $stmt = $this->connect()->prepare($query);
+
+    $stmt->bindParam(":project_id", $project_id);
+
+    $stmt->execute();
+
+    return $stmt;
   }
 
   public function getTasks($project_id, $select)
