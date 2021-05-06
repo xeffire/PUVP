@@ -83,7 +83,7 @@
       style="min-height: 90vh"
     >
       <div
-        class="d-md-flex flex-sm-wrap justify-content-between align-items-center"
+        class="d-md-flex flex-sm-wrap flex-column flex-md-row flex-md-nowrap justify-content-between align-items-center"
       >
         <button
           type="button"
@@ -97,15 +97,18 @@
             užduotį
           </p>
         </button>
-        <div class="input-group h-50 mt-3">
-          <input
-            type="search"
-            class="form-control rounded"
-            placeholder="Užduoties ID/pavadinimas"
-            aria-label="Paieška"
-            aria-describedby="search-addon"
-          />
-          <button type="button" class="btn btn-outline-primary">Ieškoti</button>
+        <div class="d-flex flex-column flex-md-row">
+          <button class="btn btn-light border d-flex justify-content-center text-nowrap align-items-center m-3 mb-0 ms-0 me-0 m-md-3 py-0" style="max-width: 285px;"><i class="bi bi-arrow-down-circle me-2" style="font-size: 1.5rem;"></i>Eksportuoti užduotis</button>
+          <div class="input-group h-50 mt-3">
+            <input
+              type="search"
+              class="form-control rounded pe-0"
+              placeholder="Užduoties ID/pavadinimas"
+              aria-label="Paieška"
+              aria-describedby="search-addon"
+            />
+            <button type="button" class="btn btn-outline-primary">Ieškoti</button>
+          </div>
         </div>
       </div>
       <div id="task-cards-container" class="row mt-3">
