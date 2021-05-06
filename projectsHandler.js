@@ -1,14 +1,33 @@
-import {Alert} from './utils/utils.js';
+import {Alert, logout, showEmail} from './utils/utils.js';
 let msg = new Alert();
-
 
 if (document.cookie.indexOf('token=') === -1) {
   logout();
 }
+
 let projects = [];
 let projectsContainer = document.getElementById('projects-container');
 let cardsContainer = document.getElementById('cards-container');
 let projectsNew = document.getElementById('projects-new');
+
+
+// class Spinner{
+//   constructor() {
+//     this.spinner = document.createElement('div');
+//     this.spinner.className = 'spinner-border text-primary';
+//   }
+
+//   on(cont){
+//     cont.append(this.spinner);
+//     this.cont = cont;
+//   }
+
+//   off() {
+//     this.spinner.remove();
+//     this.cont = {};
+//   }
+// }
+// let spinner = new Spinner();
 
 function getProjects() {
     fetch('/restful/projects')
@@ -64,7 +83,6 @@ function toggleDisplay() {
 }
 
 
-document.getElementById('new-project-form').addEventListener('submit', addNewProject);
 function addNewProject(e) {
     e.preventDefault();
     let form = new FormData(e.target);
@@ -165,20 +183,7 @@ function updateProject(id) {
     return false;
 }
 
-function showEmail() {
-    let span = document.getElementById('navbar-email');
-    fetch(`/restful/user`)
-    .then((res) => res.json())
-    .then((res) => {
-      span.innerText = res[0].email;
-    })
-    .catch((err) => console.error(err));
-}
-
-function logout() {
-    fetch(`/restful/logout`)
-    .then( () => {location.href = '/'})
-    .catch((err) => console.error(err));
-}
+document.getElementById('new-project-form').addEventListener('submit', addNewProject);
 document.getElementById('logout').addEventListener('click', logout);
+
 showEmail();

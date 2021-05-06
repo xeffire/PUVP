@@ -1,4 +1,4 @@
-import {Alert} from './utils/utils.js';
+import {Alert, logout, showEmail} from './utils/utils.js';
 
 if (document.cookie.indexOf('token=') === -1) {
   logout();
@@ -25,7 +25,6 @@ function getTasks() {
     .then(cardBuilder)
     .then(toggleDisplay);
 }
-getTasks();
 
 function cardBuilder() {
   let priorityColor = ["#28A745", "#FFC107", "#DC3545"];
@@ -85,7 +84,6 @@ function toggleDisplay() {
   tasksNew.classList.add("d-none");
 }
 
-document.getElementById("new-task-form").addEventListener("submit", addNewtask);
 function addNewtask(e) {
   e.preventDefault();
   let form = new FormData(e.target);
@@ -199,28 +197,18 @@ function updateTask(id) {
   return false;
 }
 
-function showEmail() {
-  let span = document.getElementById("navbar-email");
-  fetch(`/restful/user`)
-    .then((res) => res.json())
-    .then((res) => {
-      span.innerText = res[0].email;
-    })
-    .catch((err) => console.error(err));
-}
-
-function logout() {
-  fetch(`/restful/logout`)
-    .then(() => {
-      location.href = "/";
-    })
-    .catch((err) => console.error(err));
-}
+document.getElementById("new-task-form").addEventListener("submit", addNewtask);
 document.getElementById("logout").addEventListener("click", logout);
 showEmail();
+getTasks();
 
 // function projectName() {
-//   fetch()
+//   let projName = '';
+//   fetch(`/restful/user`)
+//   .then(res => res.json())
+//   .then(data => projName = data[0].name)
+//   .then(() => document.getElementById('project-name-heading').innerText = projName)
+//   .catch(e => msg.new(e, 'danger', 100));
 // }
 
 

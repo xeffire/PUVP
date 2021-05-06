@@ -35,4 +35,21 @@ class Alert{
     this.alerts[key] = alert;
   }
 }
-  export {Alert};
+
+function showEmail() {
+    let span = document.getElementById('navbar-email');
+    fetch(`/restful/user`)
+    .then((res) => res.json())
+    .then((res) => {
+      span.innerText = res[0].email;
+    })
+    .catch((err) => console.error(err));
+}
+
+function logout() {
+    fetch(`/restful/logout`)
+    .then( () => {location.href = '/'})
+    .catch((err) => console.error(err));
+}
+
+export {Alert, showEmail, logout};
