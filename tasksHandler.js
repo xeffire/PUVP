@@ -1,14 +1,15 @@
+import {Alert} from './utils/utils.js';
+
 if (document.cookie.indexOf('token=') === -1) {
   logout();
 }
+let msg = new Alert();
 
-let timeouts = [];
 let tasks = [];
 let tasksContainer = document.getElementById("tasks-container");
 let tasksNew = document.getElementById("tasks-new");
-var url_string = location.href;
-var url = new URL(url_string);
-var id = url.searchParams.get("id");
+let url = new URL(location.href);
+let id = url.searchParams.get("id");
 
 function getTasks() {
   fetch(`/restful/tasks?id=${id}`)
@@ -100,43 +101,17 @@ function addNewtask(e) {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], "danger", key);
+            msg.new(res.body[key], "danger", key);
           });
         return;
       }
-      alertMessage(res.body.response, "success");
+      msg.new(res.body.response, "success");
       e.target.reset();
       document.getElementById("close-new-task").click();
       getTasks();
     })
     .catch((err) => console.error(err));
   return false;
-}
-
-let box = document.createElement("div");
-
-box.style = "z-index: 1200";
-box.className = "position-fixed top-0 start-0 end-0 align-items-center d-flex flex-column";
-document.body.appendChild(box);
-
-function alertMessage(msg, color, key) {
-  if (msg == undefined) {
-    return;
-  }
-  let existingAlert = document.querySelector(`.msg-${key}`);
-  if (existingAlert != null) {
-    existingAlert.remove();
-    clearTimeout(timeouts[key]);
-  }
-  let alert = document.createElement("p");
-  alert.className = `alert alert-${color} msg-${key}`;
-  alert.style = "text-align: center; margin: 0; z-index: 1101; width: min(100%, 500px)";
-  alert.append(document.createTextNode(msg));
-  box.append(alert);
-  const timeout = setTimeout(() => {
-    document.querySelector(`.msg-${key}`).remove();
-  }, 3000);
-  timeouts[key] = timeout;
 }
 
 function deleteTask(id) {
@@ -153,11 +128,11 @@ function deleteTask(id) {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], "danger", key);
+            msg.new(res.body[key], "danger", key);
           });
         return;
       }
-      alertMessage(res.body.response, "success");
+      msg.new(res.body.response, "success");
       document.getElementById("edit-task-form").reset();
       document.getElementById("close-task").click();
       getTasks();
@@ -210,11 +185,11 @@ function updateTask(id) {
         Object.keys(res.body)
           .filter((key) => key.match(/[0-9]/))
           .forEach((key) => {
-            alertMessage(res.body[key], "danger", key);
+            msg.new(res.body[key], "danger", key);
           });
         return;
       }
-      alertMessage(res.body.response, "success");
+      msg.new(res.body.response, "success");
       document.getElementById("edit-task-form").reset();
       document.getElementById('edit-task-form').querySelectorAll('input[type="radio"]').forEach(input => input.removeAttribute('checked'));
       document.getElementById("close-task").click();
@@ -247,3 +222,5 @@ showEmail();
 // function projectName() {
 //   fetch()
 // }
+
+
