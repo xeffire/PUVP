@@ -38,9 +38,17 @@ function cardBuilder() {
       let fragment = document.createElement("template");
       for (let obj of groups[i]) {
         fragment.innerHTML += `
-          <div class="card mb-1 py-2" style="border-left: 4px solid ${
+          <div 
+            class="card mb-1 py-2" 
+            style="border-left: 4px solid ${
             priorityColor[obj.priority]
-          };">
+          }; 
+            cursor: move;" 
+            draggable="true" 
+            id="task-${obj.id}" 
+            ondragstart="onDragStart(event);" 
+            ondragend="onDragEnd(event);">
+
             <div class="card-header bg-white d-flex justify-content-between dissolve2">
               <h6 id="task-name" class="text-dark ${
                 obj.state == 2 ? "fw-light italic" : ""
