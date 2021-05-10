@@ -11,6 +11,7 @@ body {
 
 .illu-btn-container {
   position: relative;
+  pointer-events: none;
 }
 
 .illu-btn-container > button {

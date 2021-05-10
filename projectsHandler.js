@@ -10,25 +10,6 @@ let projectsContainer = document.getElementById('projects-container');
 let cardsContainer = document.getElementById('cards-container');
 let projectsNew = document.getElementById('projects-new');
 
-
-// class Spinner{
-//   constructor() {
-//     this.spinner = document.createElement('div');
-//     this.spinner.className = 'spinner-border text-primary';
-//   }
-
-//   on(cont){
-//     cont.append(this.spinner);
-//     this.cont = cont;
-//   }
-
-//   off() {
-//     this.spinner.remove();
-//     this.cont = {};
-//   }
-// }
-// let spinner = new Spinner();
-
 function getProjects() {
     fetch('/restful/projects')
     .then(res => {
@@ -41,7 +22,6 @@ function getProjects() {
     .then(cardBuilder)
     .then(toggleDisplay);
 }
-getProjects();
 
 function cardBuilder() {
     let fragment = document.createElement('template');
@@ -183,7 +163,35 @@ function updateProject(id) {
     return false;
 }
 
+class Filter{
+  constructor(searchGroup, tagSpan) {
+    this.input = searchGroup.querySelector('input');
+    console.log(this.input);
+    searchGroup.querySelector('button').addEventListener('click', this.add.bind(this));
+    this.tagSpan = tagSpan;
+    this.tags = [];
+  }
+
+  add() {
+    console.log(this.input);
+    let tag = document.createElement('span');
+    tag.className = 'badge rounded-pill bg-primary fs-4';
+    tag.innerText = this.input.value;
+    this.tagSpan.appendChild(tag);
+    this.tags.push(tag);
+    this.input.value = '';
+  }
+
+  remove(e) {
+    e.target.remove();
+  }
+}
+
+let filter = new Filter(document.querySelector('#search'), document.querySelector('#tags-span'));
+filter.add();
+
 document.getElementById('new-project-form').addEventListener('submit', addNewProject);
 document.getElementById('logout').addEventListener('click', logout);
 
 showEmail();
+getProjects();

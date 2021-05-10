@@ -13,7 +13,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="tasksHandler.js" defer></script>
+    <script src="tasksHandler.js" type="module" defer></script>
     <script src="draganddrop.js" defer></script>
     <title>Užduotys - Padarai</title>
   </head>
@@ -117,42 +117,12 @@
           <h5>Padaryti</h5>
           <hr>
           <div id="todo-container" class="board-column flex-grow-1 p-1" ondragover="onDragOver(event);" ondrop="onDrop(event);">
-            <div class="card mb-1 py-2" style="border-left: 4px solid black; cursor: move;" draggable="true" id="task-1" ondragstart="onDragStart(event);" ondragend="onDragEnd(event);">
-              <div class="card-header bg-white d-flex justify-content-between dissolve2">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#5</span> uzduotis</h6>
-                <a class="text-dark" data-id="" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="
-          "></i></a>
-              </div>
-              <div class="card-body py-1 dissolve3">
-                <p id="task-description" class="">kazkokia uzduotis</p>
-              </div>
-            </div>
-            <div class="card mb-1 py-2" style="border-left: 4px solid black; cursor: move;" draggable="true" id="task-2" ondragstart="onDragStart(event);" ondragend="onDragEnd(event);">
-              <div class="card-header bg-white d-flex justify-content-between dissolve2">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#5</span> uzduotis</h6>
-                <a class="text-dark" data-id="" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="
-          "></i></a>
-              </div>
-              <div class="card-body py-1 dissolve3">
-                <p id="task-description" class="">kazkokia uzduotis</p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-4 mt-3 d-flex flex-column">
           <h5>Daroma</h5>
           <hr>
           <div id="in-progress-container" class="board-column over flex-grow-1 p-1 " ondragover="onDragOver(event);" ondrop="onDrop(event);">
-            <div class="card mb-1 py-2" style="border-left: 4px solid black; cursor: move;" draggable="true" id="task-3" ondragstart="onDragStart(event);" ondragend="onDragEnd(event);">
-              <div class="card-header bg-white d-flex justify-content-between dissolve2">
-                <h6 id="task-name" class="text-dark"><span id="task_id">#5</span> uzduotis</h6>
-                <a class="text-dark" data-id="" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="
-          "></i></a>
-              </div>
-              <div class="card-body py-1 dissolve3">
-                <p id="task-description" class="">kazkokia uzduotis</p>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-4 mt-3 d-flex flex-column">
