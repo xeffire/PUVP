@@ -29,7 +29,7 @@ function onDrop(event) {
 
     const draggableElement = document.getElementById(id);
     console.log(draggableElement);
-    const dropzone = event.target; //kazkodel ima kitos korteles body arba headeri, ten kur nutempi, o ne event targeta
+    const dropzone = event.currentTarget; //fixed yaaaay
     console.log(dropzone); 
     dropzone.appendChild(draggableElement);
 
