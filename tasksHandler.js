@@ -43,7 +43,7 @@ function cardBuilder() {
             style="border-left: 4px solid ${
             priorityColor[obj.priority]
           }; 
-            cursor: move;" 
+            cursor: move;"
             draggable="true" 
             id="task-${obj.id}" 
             ondragstart="onDragStart(event);" 
