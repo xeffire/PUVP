@@ -21,13 +21,14 @@ function getTasks() {
     })
     .then((data) => {
       tasks = data;
+      console.log(tasks);
     })
     .then(cardBuilder)
     .then(toggleDisplay);
 }
 
 function cardBuilder() {
-  let priorityColor = ["#28A745", "#FFC107", "#DC3545"];
+  let priorityColor = ["low", "medium", "high"];
   let groups = [
     tasks.filter((item) => item.status == 0),
     tasks.filter((item) => item.status == 1),
@@ -39,11 +40,8 @@ function cardBuilder() {
       for (let obj of groups[i]) {
         fragment.innerHTML += `
           <div 
-            class="card mb-1 py-2" 
-            style="border-left: 4px solid ${
-            priorityColor[obj.priority]
-          }; 
-            cursor: move;"
+            class="card mb-1 py-2 ${priorityColor[obj.priority]}" 
+            style="cursor: move;"
             draggable="true" 
             id="task-${obj.id}" 
             ondragstart="onDragStart(event);" 
@@ -210,13 +208,55 @@ document.getElementById("logout").addEventListener("click", logout);
 showEmail();
 getTasks();
 
-// function projectName() {
-//   let projName = '';
-//   fetch(`/restful/user`)
-//   .then(res => res.json())
-//   .then(data => projName = data[0].name)
-//   .then(() => document.getElementById('project-name-heading').innerText = projName)
-//   .catch(e => msg.new(e, 'danger', 100));
-// }
+function onDragStart(event) {
+  event
+    .dataTransfer
+    .setData('text/plain', event.currentTarget.id);
+  console.log(event.dataTransfer.getData('text'));
+  event
+  .currentTarget
+  .style
+  .opacity = 1;
+}
+
+function onDragEnd(event) {
+  
+  event
+  .currentTarget
+  .style
+  .opacity = 1;
+}
+
+function onDragOver(event) {
+  event.preventDefault();
+}
+
+function onDrop(event) {
+  
+  const id = event
+    .dataTransfer
+    .getData('text/plain');
+
+  const draggableElement = document.getElementById(id);
+  const dropzone = event.currentTarget; //fixed yaaaay 👍👍👍
+  dropzone.appendChild(draggableElement);
+  console.log(id.replaceAll(/\D/g, ''));
+  let task = tasks.filter(task => task.id == id.replaceAll(/\D/g, ''))[0];
+  task.priority = ['todo-container', 'in-progress-container', 'done-container'].indexOf(dropzone.id);
+  let form = new FormData();
+  for (let key in task) {
+    form.append(key, task[key]);
+  }
+
+  fetch(`/restful/tasks/update?id=${task.id}`, {
+    method: "POST",
+    body: form
+  })
+  .then(res => res.json().then(res => console.log(res)))
+
+  event
+  .dataTransfer
+  .clearData();
+}
 
 
