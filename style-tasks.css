@@ -3,12 +3,6 @@ body {
   min-height: 100vh;
 }
 
-/* .background {
-  z-index: -1;
-  background: url(./background-curve.svg) bottom/contain no-repeat;
-  
-} */
-
 .illu-btn-container {
   position: relative;
 }
@@ -27,10 +21,6 @@ body {
   top: 20%;
 }
 
-/* .navbar .btn:focus,
-.container .btn:focus {
-  box-shadow: none;
-} */
 
 /* kol kas nukopinta is maino */
 /* Generuojamos korteles stiliai */
@@ -52,6 +42,18 @@ body {
 /* .card  {
   border-left: 4px solid red;
 } */
+
+.low {
+  border-left: 4px solid #28A745;
+}
+
+.medium {
+  border-left: 4px solid #FFC107;
+}
+
+.high {
+  border-left: 4px solid #DC3545;
+}
 
 .board-column {
   background-color: #E9ECEF;
