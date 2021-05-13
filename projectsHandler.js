@@ -31,7 +31,7 @@ function cardBuilder() {
             <div class="card border-1 border-primary my-3 p-0" style="width: 100%;">
                 <div class="card-header bg-primary d-flex justify-content-between">
                     <h4>${obj.total_done == 0 && obj.total != 0?'Padarytas':'Daromas'}</h4>
-                    <a class="text-white" data-id="${obj.id}" href="#edit_project" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
+                    <a class="text-white" data-id="${obj.id}" href="#edit-project" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${obj.id}"></i></a>
                 </div>
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title dissolve2" style="line-height: 1.45rem;">${obj.name}</h5>
@@ -120,12 +120,12 @@ function deleteProject(id) {
 
 function handleEditData(e) {
     let id = e.target.getAttribute('data-id');
-    let editCard = document.getElementById('edit_project');
+    let editCard = document.getElementById('edit-project');
     let obj = projects.filter(item => item.id == id)[0];
     editCard.querySelector('#project-name').value = obj.name;
     editCard.querySelector('#project-description').value = obj.description;
-    editCard.querySelector('#tasks_total').innerText = obj.total;
-    editCard.querySelector('#tasks_undone').innerText = obj.total_done;
+    editCard.querySelector('#tasks-total').innerText = obj.total;
+    editCard.querySelector('#tasks-undone').innerText = obj.total_done;
     let oldProjectSave = editCard.querySelector('#project-save');
     let newProjectSave = oldProjectSave.cloneNode(true);
     oldProjectSave.parentNode.replaceChild(newProjectSave, oldProjectSave);

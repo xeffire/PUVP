@@ -52,10 +52,10 @@ function cardBuilder() {
             <div class="card-header bg-white d-flex justify-content-between dissolve2">
               <h6 id="task-name" class="text-dark ${
                 obj.state == 2 ? "fw-light italic" : ""
-              }"><span id="task_id">#${obj.id}</span> ${obj.name}</h6>
+              }"><span id="task-id">#${obj.id}</span> ${obj.name}</h6>
               <a class="text-dark" data-id="${
                 obj.id
-              }" href="#edit_task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${
+              }" href="#edit-task" data-toggle="modal"><i class="bi bi-pencil-square" data-id="${
           obj.id
         }"></i></a>
             </div>
@@ -151,7 +151,7 @@ function handleEditData(e) {
   const priority = ["low", "medium", "high"];
   const status = ["to-do", "in-progress", "done"];
   const taskID = e.target.getAttribute("data-id");
-  const editCard = document.getElementById("edit_task");
+  const editCard = document.getElementById("edit-task");
   const obj = tasks.filter((item) => item.id == taskID)[0];
   editCard.querySelector("#task-name").value = obj.name;
   editCard.querySelector("#task-description").value = obj.description;
@@ -161,8 +161,8 @@ function handleEditData(e) {
   editCard
     .querySelector(`#${status[obj.status]}`)
     .setAttribute("checked", "true");
-  editCard.querySelector("#date_create").innerText = obj.created;
-  editCard.querySelector("#date_update").innerText = obj.updated;
+  editCard.querySelector("#date-create").innerText = obj.created;
+  editCard.querySelector("#date-update").innerText = obj.updated;
   let oldtaskSave = editCard.querySelector("#task-edit");
   let newtaskSave = oldtaskSave.cloneNode(true);
   oldtaskSave.parentNode.replaceChild(newtaskSave, oldtaskSave);
