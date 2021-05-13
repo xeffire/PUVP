@@ -120,3 +120,9 @@ body {
 .modal-content {
   border: none;
 }
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 0.9rem;
+  }
+}

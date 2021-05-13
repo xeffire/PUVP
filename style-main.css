@@ -106,3 +106,9 @@ body {
   background: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 50%);
   overflow: hidden;
 }
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 0.9rem;
+  }
+}

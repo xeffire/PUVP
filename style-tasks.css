@@ -199,3 +199,10 @@ body {
     rgba(0, 0, 0, 0.2)
   );
 }
+
+
+@media screen and (max-width: 500px) {
+  :root {
+    font-size: 0.9rem;
+  }
+}
