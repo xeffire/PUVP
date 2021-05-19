@@ -259,4 +259,42 @@ function onDrop(event) {
   .clearData();
 }
 
+function exports(exportable) {
+  fetch('/restful/'+exportable+'?id='+id)
+  .then(res => {
+      return res.json();
+  })
+  .then(data => {
+    let cvs = '';
+    console.log(data);
+    for(let field in data[0]) {
+      cvs += field + '|'
+    }
+    cvs = cvs.slice(0, -1) + '\r\n';
+    for(let row of data) {
+      for(let field in row) {
+        cvs += row[field] + '|';
+      }
+      cvs = cvs.slice(0, -1) + '\r\n';
+    }
+    return cvs;
+  })
+  .then(data => download(exportable + '-' + Math.floor(Date.now() / 100) + '.csv', data));
+
+  function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+}
+document.querySelector('#export').addEventListener('click', exports.bind(this, 'tasks'));
 

@@ -164,9 +164,8 @@ function updateProject(id) {
 }
 
 class Filter{
-  constructor(searchGroup, tagSpan) {
+  constructor(searchGroup, tagSpan) { //<- conteineris su search inputu ir conteineris, kur talpinami tagai
     this.input = searchGroup.querySelector('input');
-    console.log(this.input);
     searchGroup.querySelector('button').addEventListener('click', this.add.bind(this));
     this.input.addEventListener('keyup', function(event) {
       if (event.keyCode === 13) {
@@ -198,13 +197,55 @@ class Filter{
   remove(e) {
     e.target.remove();
   }
+
+  refreshFilterables() {
+  }
 }
 
 let filter = new Filter(document.querySelector('#search'), document.querySelector('#tags-span'));
-// filter.add();
 
 document.getElementById('new-project-form').addEventListener('submit', addNewProject);
 document.getElementById('logout').addEventListener('click', logout);
 
 showEmail();
 getProjects();
+
+function exports(exportable) {
+  fetch('/restful/'+exportable)
+  .then(res => {
+      return res.json();
+  })
+  .then(data => {
+    let cvs = '';
+    for(let field in data[0]) {
+      cvs += field + '|'
+    }
+    cvs = cvs.slice(0, -1) + '\r\n';
+    for(let row of data) {
+      for(let field in row) {
+        cvs += row[field] + '|';
+      }
+      cvs = cvs.slice(0, -1) + '\r\n';
+    }
+    console.log(cvs);
+    return cvs;
+  })
+  .then(data => download(exportable + '-' + Math.floor(Date.now() / 100) + '.csv', data));
+
+  function download(filename, text) {
+    var pom = document.createElement('a');
+    pom.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+    pom.setAttribute('download', filename);
+
+    if (document.createEvent) {
+        var event = document.createEvent('MouseEvents');
+        event.initEvent('click', true, true);
+        pom.dispatchEvent(event);
+    }
+    else {
+        pom.click();
+    }
+}
+}
+document.querySelector('#export').addEventListener('click', exports.bind(this, 'projects'));
+
