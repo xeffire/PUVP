@@ -168,6 +168,12 @@ class Filter{
     this.input = searchGroup.querySelector('input');
     console.log(this.input);
     searchGroup.querySelector('button').addEventListener('click', this.add.bind(this));
+    this.input.addEventListener('keyup', function(event) {
+      if (event.keyCode === 13) {
+          event.preventDefault();
+          searchGroup.querySelector('button').click();
+      }
+    });
     this.tagSpan = tagSpan;
     this.tags = [];
   }
@@ -175,8 +181,15 @@ class Filter{
   add() {
     console.log(this.input);
     let tag = document.createElement('span');
-    tag.className = 'badge rounded-pill bg-primary fs-4';
+    tag.className = 'badge rounded-pill bg-primary badge-outline fs-5 ms-1';
     tag.innerText = this.input.value;
+    let x = document.createElement('i');
+    x.className = 'bi bi-x ms-2 pointer';
+    tag.appendChild(x);
+    x.style.cursor = 'pointer';
+    x.addEventListener("click", (event) => {
+      event.target.parentNode.remove();
+    });
     this.tagSpan.appendChild(tag);
     this.tags.push(tag);
     this.input.value = '';
@@ -188,7 +201,7 @@ class Filter{
 }
 
 let filter = new Filter(document.querySelector('#search'), document.querySelector('#tags-span'));
-filter.add();
+// filter.add();
 
 document.getElementById('new-project-form').addEventListener('submit', addNewProject);
 document.getElementById('logout').addEventListener('click', logout);
