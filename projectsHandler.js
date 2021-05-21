@@ -180,7 +180,8 @@ class Filter{
   }
 
   add() {
-    let keyword = this.input.value;
+    let keyword = this.input.value.toUpperCase();
+    let tagText = this.input.value;
     console.log(keyword);
     if (keyword === '' || this.tags.includes(keyword)) {
       this.input.value = '';
@@ -188,7 +189,7 @@ class Filter{
     }
     let tag = document.createElement('span');
     tag.className = 'badge rounded-pill bg-primary badge-outline fs-5 ms-1';
-    tag.innerText = keyword;
+    tag.innerText = tagText;
     let x = document.createElement('i');
     x.className = 'bi bi-x ms-2 pointer';
     tag.appendChild(x);
@@ -200,7 +201,7 @@ class Filter{
       filter.filter();
     });
     this.tagSpan.appendChild(tag);
-    this.tags.push(keyword.toUpperCase());
+    this.tags.push(keyword);
     this.input.value = '';
     this.getNames();
     this.filter();
