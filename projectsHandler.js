@@ -166,7 +166,6 @@ function updateProject(id) {
 class Filter{
   constructor(searchGroup, tagSpan) {
     this.input = searchGroup.querySelector('input');
-    console.log(this.input);
     searchGroup.querySelector('button').addEventListener('click', this.add.bind(this));
     this.input.addEventListener('keyup', function(event) {
       if (event.keyCode === 13) {
@@ -181,17 +180,14 @@ class Filter{
   }
 
   add() {
-    console.log(this.input);
     let keyword = this.input.value;
     console.log(keyword);
-    if (keyword === "" || this.tags.includes(keyword)) {
+    if (keyword === '' || this.tags.includes(keyword)) {
       this.input.value = '';
       return;
     }
-    console.log(this.tags);
     let tag = document.createElement('span');
     tag.className = 'badge rounded-pill bg-primary badge-outline fs-5 ms-1';
-    
     tag.innerText = keyword;
     let x = document.createElement('i');
     x.className = 'bi bi-x ms-2 pointer';
@@ -204,44 +200,31 @@ class Filter{
       filter.filter();
     });
     this.tagSpan.appendChild(tag);
-    this.tags.push(keyword);
+    this.tags.push(keyword.toUpperCase());
     this.input.value = '';
     this.getNames();
     this.filter();
   }
 
   getNames() {
-    
-    // console.log(cards);
     const titles = [...document.querySelectorAll(".card-title")];
-    console.log(titles);
     this.names = titles.map(
-      (item) => item.innerText
+      (item) => item.innerText.toUpperCase()
     );
-    console.log(this.names);
     this.names.forEach((key, i) => (this.nameList[key] = titles[i]));
-    console.log(this.nameList);
   };
 
   filter(){
     const cards = [...document.querySelectorAll(".card")];
-    console.log(cards);
     cards.forEach(card=>{
       card.parentElement.classList.remove("d-none");
     });
     this.tags.forEach((tag)=>this.names.forEach((nam)=>
       {if(nam.search(tag)==-1){
-        // let index = this.names.indexOf(nam);
-        // console.log(nam);
-        // console.log(index);
-        // console.log(this.nameList[nam]);
-        console.log(tag);
         this.nameList[nam].parentElement.parentElement.parentElement.classList.add("d-none");
-      // }else {
-      //   this.nameList[nam].parentElement.parentElement.parentElement.remove();
       }
     }
-      ));
+    ));
   };
   
 
