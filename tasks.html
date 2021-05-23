@@ -100,7 +100,7 @@
         </button>
         <div class="d-flex flex-column flex-md-row">
           <button id="export" class="btn btn-light border text-secondary d-flex justify-content-center text-nowrap align-items-center m-3 mb-0 ms-0 me-0 m-md-3 py-0" style="max-width: 285px;"><i class="bi bi-arrow-down-circle me-2" style="font-size: 1.5rem;"></i>Eksportuoti užduotis</button>
-          <div class="input-group h-50 mt-3">
+          <div id="task-search" class="input-group h-50 mt-3">
             <input
               type="search"
               class="form-control rounded pe-0"
@@ -111,6 +111,10 @@
             <button type="button" class="btn btn-outline-primary">Ieškoti</button>
           </div>
         </div>
+      </div>
+      <div class="d-flex justify-content-end">
+        <span id="task-tags-span">
+        </span>
       </div>
       <div id="task-cards-container" class="row mt-3">
         <div class="col-md-4 mt-3 d-flex flex-column">
