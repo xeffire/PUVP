@@ -259,6 +259,92 @@ function onDrop(event) {
   .clearData();
 }
 
+class Filter{
+  constructor(searchGroup, tagSpan) {
+    this.input = searchGroup.querySelector('input');
+    console.log(this.input);
+    searchGroup.querySelector('button').addEventListener('click', this.add.bind(this));
+    this.input.addEventListener('keyup', function(event) {
+      if (event.keyCode === 13) {
+          event.preventDefault();
+          searchGroup.querySelector('button').click();
+      }
+    });
+    this.tagSpan = tagSpan;
+    this.tags = [];
+    this.nameList = {};
+    this.names = [];
+  }
+
+  add() {
+    console.log(this.input);
+    let keyword = this.input.value.toUpperCase();
+    let tagText = this.input.value;
+    console.log(keyword);
+    if (keyword === "" || this.tags.includes(keyword)) {
+      this.input.value = '';
+      return;
+    }
+    console.log(this.tags);
+    let tag = document.createElement('span');
+    tag.className = 'badge rounded-pill bg-primary badge-outline fs-5 ms-1';
+    tag.innerText = tagText;
+    let x = document.createElement('i');
+    x.className = 'bi bi-x ms-2 pointer';
+    tag.appendChild(x);
+    x.style.cursor = 'pointer';
+    x.addEventListener("click", (event) => {
+      event.target.parentNode.remove();
+      let index = this.tags.indexOf(keyword);
+      this.tags.splice(index, 1);
+      filter.filter();
+    });
+    this.tagSpan.appendChild(tag);
+    this.tags.push(keyword);
+    this.input.value = '';
+    this.getNames();
+    this.filter();
+  }
+
+  getNames() {
+    const titles = [...document.querySelectorAll(".card-header:first-child h6")];
+    console.log(titles);
+    this.names = titles.map(
+      (item) => item.innerText.toUpperCase()
+    );
+    console.log(this.names);
+    this.names.forEach((key, i) => (this.nameList[key] = titles[i]));
+    console.log(this.nameList);
+  };
+
+  filter(){
+    const cards = [...document.querySelectorAll(".card")];
+    console.log(cards);
+    cards.forEach(card=>{
+      card.classList.remove("d-none");
+    });
+    this.tags.forEach((tag)=>this.names.forEach((nam)=>
+      {if(nam.search(tag)==-1){
+        console.log(tag);
+        this.nameList[nam].parentElement.parentElement.classList.add("d-none");
+      }
+    }
+    ));
+  };
+  
+
+  remove(e) {
+    e.target.remove();
+  }
+  
+  refreshFilterables() {
+  }
+
+}
+
+let filter = new Filter(document.querySelector('#task-search'), document.querySelector('#task-tags-span'));
+
+
 function exports(exportable) {
   fetch('/restful/'+exportable+'?id='+id)
   .then(res => {
