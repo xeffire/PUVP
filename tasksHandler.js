@@ -318,6 +318,11 @@ class Filter{
   };
 
   filter(){
+    let isAlert = document.querySelector("#tasks-container > p");
+    if (isAlert) {
+      isAlert.remove();
+    }
+    document.getElementById("task-cards-container").classList.remove("d-none");
     const cards = [...document.querySelectorAll(".card")];
     console.log(cards);
     cards.forEach(card=>{
@@ -330,6 +335,15 @@ class Filter{
       }
     }
     ));
+    if (!document.querySelector(".card:not(.d-none)")) {
+      document.getElementById("task-cards-container").classList.add("d-none");
+      let p = document.createElement("p");
+      p.className = "alert alert-warning mt-3";
+      p.id = "msg";
+      p.innerText = "Pagal paieškos kriterijus užduočių nerasta!";
+      document.querySelector("#tasks-container").appendChild(p);
+      console.log(p);
+    }
   };
   
 
