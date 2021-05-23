@@ -216,6 +216,10 @@ class Filter{
   };
 
   filter(){
+    let isAlert = document.querySelector("#projects-container > p");
+    if (isAlert) {
+      isAlert.remove();
+    }
     const cards = [...document.querySelectorAll(".card")];
     cards.forEach(card=>{
       card.parentElement.classList.remove("d-none");
@@ -226,6 +230,14 @@ class Filter{
       }
     }
     ));
+    if (!document.querySelector(".col-12:not(.d-none)")) {
+        let p = document.createElement("p");
+        p.className = "alert alert-warning mt-3";
+        p.id = "msg";
+        p.innerText = "Pagal paieškos kriterijus projektų nerasta!";
+        document.querySelector("#projects-container").appendChild(p);
+        console.log(p);
+      }
   };
   
 
