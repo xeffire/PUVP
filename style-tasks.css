@@ -200,6 +200,16 @@ body {
   );
 }
 
+.badge {
+  /* background-color: #7749f8!important; */
+  font-weight: normal;
+}
+
+.badge-outline {
+  color: #7749f8;
+  border: 2px solid #7749f8;
+  background-color: transparent!important;
+}
 
 @media screen and (max-width: 500px) {
   :root {
