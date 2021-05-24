@@ -2,7 +2,6 @@ function onDragStart(event) {
     event
       .dataTransfer
       .setData('text/plain', event.currentTarget.id);
-    console.log(event.dataTransfer.getData('text'));
     event
     .currentTarget
     .style
@@ -30,7 +29,7 @@ function onDrop(event) {
     const draggableElement = document.getElementById(id);
     const dropzone = event.currentTarget; //fixed yaaaay 👍👍👍
     dropzone.appendChild(draggableElement);
-
+    updateTask(id);
     
 
     event
@@ -39,28 +38,33 @@ function onDrop(event) {
 }
 
 function updateTask(id) {
-  let editForm = new FormData(document.getElementById("edit-task-form"));
-  fetch(`/restful/tasks/update?id=${id}`, {
+  const priority = ["low", "medium", "high"];
+  const status = ["todo-container", "in-progress-container", "done-container"];
+  let task = document.getElementById(id);
+  const url = new URL(location.href);
+  const projectId = url.searchParams.get("id");
+  let updateForm = new FormData();
+  updateForm.append('id', id.replace(/task-/, ''));
+  updateForm.append('project_id', projectId);
+  updateForm.append('name', task.querySelector('#task-name').textContent.replace(/^#(\d)+\s/, ''));
+  updateForm.append('description', task.querySelector('#task-description').textContent);
+  updateForm.append('priority', priority.indexOf(task.className.match(/low|medium|high/)[0]));
+  console.log(task.className.match(/low|medium|high/)[0]);
+  console.log(task.closest('.board-column').id);
+  updateForm.append('status', status.indexOf(task.closest('.board-column').id));
+  console.log([...updateForm]);
+
+  fetch(`/restful/tasks/update?id=${id.replace(/task-/, '')}`, {
     method: "POST",
-    body: editForm,
+    body: updateForm,
   })
-    .then((res) =>
-      res.json().then((data) => ({ body: data, status: res.status }))
-    )
-    .then(() => {
-      document.getElementById("edit-task-form").reset();
-      document.getElementById('edit-task-form').querySelectorAll('input[type="radio"]').forEach(input => input.removeAttribute('checked'));
-    })
-    .catch((err) => console.error(err));
-  return false;
 }
 
-function handleEditData() {
+function handleEditData(id) {
   const priority = ["low", "medium", "high"];
   const status = ["to-do", "in-progress", "done"];
-  const taskID = e.target.getAttribute("data-id");
   const editCard = document.getElementById("edit-task");
-  const obj = tasks.filter((item) => item.id == taskID)[0];
+  const obj = tasks.filter((item) => item.id == id)[0];
   editCard.querySelector("#task-name").value = obj.name;
   editCard.querySelector("#task-description").value = obj.description;
   editCard

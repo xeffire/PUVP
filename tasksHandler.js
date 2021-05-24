@@ -43,9 +43,7 @@ function cardBuilder() {
             class="card mb-1 py-2 ${priorityColor[obj.priority]}" 
             style="cursor: move;"
             draggable="true" 
-            id="task-${obj.id}" 
-            ondragstart="onDragStart(event);" 
-            ondragend="onDragEnd(event);">
+            id="task-${obj.id}" >
 
             <div class="card-header bg-white d-flex justify-content-between dissolve2">
               <h6 id="task-name" class="text-dark ${
@@ -77,6 +75,8 @@ function cardBuilder() {
     .querySelectorAll("a[data-id]");
   for (let link of editLinks) {
     link.addEventListener("click", handleEditData);
+    let card = link.closest('.card');
+    card.addEventListener('dragstart', onDragStart);
   }
 }
 
@@ -175,8 +175,19 @@ function handleEditData(e) {
   });
 }
 
-function updateTask(id) {
-  let editForm = new FormData(document.getElementById("edit-task-form"));
+function updateTask(id, thruModal=true, status=null) {
+  let editForm;
+  if (thruModal) {
+    editForm = new FormData(document.getElementById("edit-task-form"));
+  } else {
+    let task = tasks.filter(task => task.id == id);
+    editForm = new FormData();
+    for (const key in task) {
+      editForm.append(key, task[key]);
+    }
+    editForm.set('status', )
+    console.log([...editForm]);
+  }
   fetch(`/restful/tasks/update?id=${id}`, {
     method: "POST",
     body: editForm,
@@ -212,19 +223,6 @@ function onDragStart(event) {
   event
     .dataTransfer
     .setData('text/plain', event.currentTarget.id);
-  console.log(event.dataTransfer.getData('text'));
-  event
-  .currentTarget
-  .style
-  .opacity = 1;
-}
-
-function onDragEnd(event) {
-  
-  event
-  .currentTarget
-  .style
-  .opacity = 1;
 }
 
 function onDragOver(event) {
@@ -240,9 +238,8 @@ function onDrop(event) {
   const draggableElement = document.getElementById(id);
   const dropzone = event.currentTarget; //fixed yaaaay 👍👍👍
   dropzone.appendChild(draggableElement);
-  console.log(id.replaceAll(/\D/g, ''));
   let task = tasks.filter(task => task.id == id.replaceAll(/\D/g, ''))[0];
-  task.priority = ['todo-container', 'in-progress-container', 'done-container'].indexOf(dropzone.id);
+  task.status = ['todo-container', 'in-progress-container', 'done-container'].indexOf(dropzone.id);
   let form = new FormData();
   for (let key in task) {
     form.append(key, task[key]);
@@ -251,8 +248,9 @@ function onDrop(event) {
   fetch(`/restful/tasks/update?id=${task.id}`, {
     method: "POST",
     body: form
-  })
-  .then(res => res.json().then(res => console.log(res)))
+  });
+
+  document.querySelector('#edit-task-form').reset();
 
   event
   .dataTransfer
@@ -397,4 +395,10 @@ function exports(exportable) {
 }
 }
 document.querySelector('#export').addEventListener('click', exports.bind(this, 'tasks'));
+document.querySelector('#todo-container').addEventListener('dragover', onDragOver);
+document.querySelector('#todo-container').addEventListener('drop', onDrop);
+document.querySelector('#in-progress-container').addEventListener('dragover', onDragOver);
+document.querySelector('#in-progress-container').addEventListener('drop', onDrop);
+document.querySelector('#done-container').addEventListener('dragover', onDragOver);
+document.querySelector('#done-container').addEventListener('drop', onDrop);
 

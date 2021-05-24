@@ -14,7 +14,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="tasksHandler.js" type="module" defer></script>
-    <script src="draganddrop.js" defer></script>
+    <!-- <script src="draganddrop.js" defer></script> -->
     <title>Užduotys - Padarai</title>
   </head>
   <body>
@@ -120,19 +120,19 @@
         <div class="col-md-4 mt-3 d-flex flex-column">
           <h5>Padaryti</h5>
           <hr>
-          <div id="todo-container" class="board-column flex-grow-1 p-1" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+          <div id="todo-container" class="board-column flex-grow-1 p-1">
           </div>
         </div>
         <div class="col-md-4 mt-3 d-flex flex-column">
           <h5>Daroma</h5>
           <hr>
-          <div id="in-progress-container" class="board-column over flex-grow-1 p-1 " ondragover="onDragOver(event);" ondrop="onDrop(event);">
+          <div id="in-progress-container" class="board-column over flex-grow-1 p-1 ">
           </div>
         </div>
         <div class="col-md-4 mt-3 d-flex flex-column">
           <h5>Padaryta</h5>
           <hr>
-          <div id="done-container" class="board-column over flex-grow-1 p-1 fw-light fst-italic" ondragover="onDragOver(event);" ondrop="onDrop(event);">
+          <div id="done-container" class="board-column over flex-grow-1 p-1 fw-light fst-italic">
           </div>
         </div>
       </div>
