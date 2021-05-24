@@ -29,4 +29,4 @@ Sistemą sukūrė Vilniaus technologijų mokymo centro Žiniatinklio programuoto
 ### Padėkos
 
 * Nuoširdžiai dėkojame savo projekto komandos kuratorei mokytojai Gretai Grigelionytei, projekto koordinatorei mokytojai Justinai Balsei ir visiems VTMC mokytojams, kurių mums suteiktos žinios leido įgyvendinti projektą. :heart:
-* Google'ui ir stackoverflow'ui. :smile:
+* Google'ui ir stackoverflow'ui. :sweat_smile:
