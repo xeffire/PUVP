@@ -230,7 +230,7 @@ function onDragOver(event) {
 }
 
 function onDrop(event) {
-  
+  event.preventDefault();
   const id = event
     .dataTransfer
     .getData('text/plain');
