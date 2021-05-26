@@ -3,8 +3,8 @@
 namespace Controllers;
 
 use \Core\Helpers;
-use \Models\Tasks;
 use \Models\Projects;
+use \Models\Tasks;
 
 class TasksController
 {
@@ -55,6 +55,51 @@ class TasksController
         }
     }
 
+    public function getNameByIndex()
+    {
+
+        if (isset($_GET)) {
+
+            $task_id = isset($_GET['id']) ? $_GET['id'] : null;
+
+            $tasksModel = new Tasks;
+
+            $e = [];
+
+            if (empty($task_id)) {
+                $e[1] = "Nepasirinkote užduoties.";
+            }
+
+            if (!empty($task_id) && $tasksModel->countTasksById($task_id) <= 0) {
+                $e[2] = "Užduotis neegzistuoja.";
+            }
+
+            if (!empty($e)) {
+
+                Helpers::response(400, $e);
+
+            } else {
+
+                $stmt = $tasksModel->getTaskById($task_id);
+
+                $rows = $stmt->rowCount();
+
+                if ($rows <= 0) {
+
+                    Helpers::response(204, []);
+
+                } else {
+
+                    $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+                    Helpers::response(200, $data);
+
+                }
+
+            }
+        }
+    }
+
     public function create()
     {
         if (isset($_GET) && isset($_POST)) {
@@ -83,7 +128,7 @@ class TasksController
             if (!empty($name) && !empty($description) && strlen($name) < 5) {
                 $e[4] = "Užduoties pavadinimas per trumpas.";
             }
-              
+
             if (!empty($name) && !empty($description) && strlen($description) < 10) {
                 $e[5] = "Užduoties aprašymas per trumpas.";
             }
@@ -140,8 +185,7 @@ class TasksController
 
     public function update()
     {
-        if (isset($_GET) && isset($_POST))
-        {
+        if (isset($_GET) && isset($_POST)) {
             $id = isset($_GET['id']) ? $_GET['id'] : null;
             $name = isset($_POST['name']) ? $_POST['name'] : null;
             $description = isset($_POST['description']) ? $_POST['description'] : null;
@@ -167,7 +211,7 @@ class TasksController
             if (!empty($name) && !empty($description) && strlen($name) < 5) {
                 $e[4] = "Užduoties pavadinimas per trumpas.";
             }
-              
+
             if (!empty($name) && !empty($description) && strlen($description) < 10) {
                 $e[5] = "Užduoties aprašymas per trumpas.";
             }
@@ -177,7 +221,7 @@ class TasksController
                 Helpers::response(400, $e);
 
             } else {
-            
+
                 $tasksModel->updateTaskById($id, $name, $description, $status, $priority, date('Y-m-d H:i:s'));
 
                 Helpers::response(200, ["response" => "Užduotis atnaujinta."]);
