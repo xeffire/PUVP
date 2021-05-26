@@ -117,6 +117,51 @@ class ProjectsController {
     }
   }
 
+  public function getNameByIndex()
+  {
+
+      if (isset($_GET)) {
+
+          $project_id = isset($_GET['id']) ? $_GET['id'] : null;
+
+          $projectsModel = new Projects;
+
+          $e = [];
+
+          if (empty($project_id)) {
+              $e[1] = "Nepasirinkote užduoties.";
+          }
+
+          if (!empty($project_id) && $projectsModel->countProjectsById($project_id) <= 0) {
+              $e[2] = "Užduotis neegzistuoja.";
+          }
+
+          if (!empty($e)) {
+
+              Helpers::response(400, $e);
+
+          } else {
+
+              $stmt = $projectsModel->getProjectById($project_id);
+
+              $rows = $stmt->rowCount();
+
+              if ($rows <= 0) {
+
+                  Helpers::response(204, []);
+
+              } else {
+
+                  $data = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+                  Helpers::response(200, $data);
+
+              }
+
+          }
+      }
+  }
+
   public function update() {
 
     if (isset($_GET) && isset($_POST)) {

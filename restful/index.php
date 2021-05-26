@@ -32,4 +32,4 @@ Route::set('/tasks', TasksController::class, 'show', true);
 Route::set('/tasks/update', TasksController::class, 'update', true);
 Route::set('/tasks/delete', TasksController::class, 'delete', true);
 
-Route::set('/taskname', TasksController::class, 'getNameByIndex', true);
+Route::set('/projectname', ProjectsController::class, 'getNameByIndex', true);

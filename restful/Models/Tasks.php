@@ -45,13 +45,15 @@ class Tasks extends Database
 
     public function addTaskToProjectById($id, $name, $description, $priority)
     {
-        $query = 'INSERT INTO tasks (project_id, name, description, priority) VALUES (:id, :name, :description, :priority)';
+        $date = date('Y-m-d H:i:s');
+        $query = 'INSERT INTO tasks (project_id, name, description, priority, created) VALUES (:id, :name, :description, :priority, :created)';
 
         $stmt = $this->connect()->prepare($query);
         $stmt->bindParam(":id", $id);
         $stmt->bindParam(":name", $name);
         $stmt->bindParam(":description", $description);
         $stmt->bindParam(":priority", $priority);
+        $stmt->bindParam(":created", $date);
         $stmt->execute();
     }
 

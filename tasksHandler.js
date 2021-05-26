@@ -230,7 +230,7 @@ function onDragOver(event) {
 }
 
 function onDrop(event) {
-  event.preventDefault();
+  
   const id = event
     .dataTransfer
     .getData('text/plain');
@@ -402,3 +402,6 @@ document.querySelector('#in-progress-container').addEventListener('drop', onDrop
 document.querySelector('#done-container').addEventListener('dragover', onDragOver);
 document.querySelector('#done-container').addEventListener('drop', onDrop);
 
+fetch('/restful/projectname?id='+id)
+  .then(res => res.json())
+  .then(res => document.getElementById('project-name-heading').textContent = res[0]['name']);

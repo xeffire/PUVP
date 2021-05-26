@@ -14,6 +14,10 @@ class Projects extends Database {
 
   }
 
+  public function getProjectById($id) {
+    return Query::select('name', 'projects', 'id = :id')->bind([':id' => $id]);
+  }
+
   public function countProjects()
   {
     $stmt = Query::select("COUNT(*)", "projects")->bind();
@@ -30,7 +34,7 @@ class Projects extends Database {
     
   }
 
-  public function create($name, $description) {
+  public function create($name, $description, $date) {
 
     $query = "INSERT INTO projects (name, description) VALUES(:name, :description)";
 
