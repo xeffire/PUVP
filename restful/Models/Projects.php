@@ -34,7 +34,7 @@ class Projects extends Database {
     
   }
 
-  public function create($name, $description, $date) {
+  public function create($name, $description) {
 
     $query = "INSERT INTO projects (name, description) VALUES(:name, :description)";
 
